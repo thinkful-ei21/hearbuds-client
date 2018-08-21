@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 
 export class EventList extends React.Component {
-
+    
 
     render() {
         // eventually this will be populated with events
@@ -11,7 +11,9 @@ export class EventList extends React.Component {
         // loop through the array of events and display a list
         let eventList;
         return (
-            {eventList}
+            <div>
+                {eventList}
+            </div>
         )
     }
 }

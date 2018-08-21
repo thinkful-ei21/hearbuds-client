@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 
-export class Comments extends React.Component {
+export default class Comments extends React.Component {
 
     render() {
         return (
@@ -11,10 +11,10 @@ export class Comments extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        // some comments will come form state
-    };
-}
+// const mapStateToProps = state => {
+//     return {
+//         // some comments will come form state
+//     };
+// }
 
-export default requiresLogin()(connect(mapStateToProps)(Comments));
+// export default requiresLogin()(connect(mapStateToProps)(Comments));

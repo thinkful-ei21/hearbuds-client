@@ -3,8 +3,10 @@ import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import {fetchProtectedData} from '../actions/protected-data';
 import Comments from './comments';
+import  {data} from '../utils/sampleResponse';
 
-export class SingleEvent extends React.Component {
+
+class SingleEvent extends React.Component {
     componentDidMount() {
         // action calls will go here
         this.props.dispatch(fetchProtectedData());
@@ -12,7 +14,10 @@ export class SingleEvent extends React.Component {
 
     render() {
         return (
-            <Comments />
+            <div>
+                <p>{data.name}</p>
+                <Comments />
+            </div>
         )
     }
 }
@@ -20,6 +25,7 @@ export class SingleEvent extends React.Component {
 const mapStateToProps = state => {
     const {currentUser} = state.auth;
     return {
+        // grab the event info from state here
         username: state.auth.currentUser.username,
         protectedData: state.protectedData.data
     };

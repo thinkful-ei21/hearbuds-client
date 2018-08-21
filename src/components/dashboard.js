@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import {fetchProtectedData} from '../actions/protected-data';
 import EventList from './event-list';
+import SingleEvent from './single-event';
 
 export class Dashboard extends React.Component {
     componentDidMount() {
@@ -14,6 +15,7 @@ export class Dashboard extends React.Component {
             <div className="dashboard">
                 <h2>Welcome {this.props.username}!</h2>
             <EventList />
+            <SingleEvent />
             </div>
         );
     }
