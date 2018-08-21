@@ -8,9 +8,13 @@ const passwordLength = length({min: 10, max: 72});
 const matchesPassword = matches('password');
 
 export class RegistrationForm extends React.Component {
+
     onSubmit(values) {
-        const {username, password, firstName, lastName} = values;
-        const user = {username, password, firstName, lastName};
+        // grabs username, password and zipcode and from redux form
+        const { username, password, zipcode } = values;
+
+        // creates a user object 
+        const user = {username, password, zipcode};
         return this.props
             .dispatch(registerUser(user))
             .then(() => this.props.dispatch(login(username, password)));
