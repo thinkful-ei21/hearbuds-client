@@ -6,13 +6,15 @@ export class EventList extends React.Component {
 
 
     render() {
+        // eventually this will be populated with events
+        // from the API
         return 'Events';
     }
 }
 
 const mapStateToProps = state => {
     return {
-
+        // we'll put props here from redux state
     };
 }
 
