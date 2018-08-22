@@ -12,10 +12,11 @@ export class RegistrationForm extends React.Component {
 
     onSubmit(values) {
         // grabs username, password and zipcode and from redux form
-        const { username, password, zipcode } = values;
+        const { username, password, zip } = values;
 
         // creates a user object 
-        const user = {username, password, zipcode};
+        const user = {username, password, zip};
+        console.log(user);
         return this.props
             .dispatch(registerUser(user))
             .then(() => this.props.dispatch(login(username, password)));
