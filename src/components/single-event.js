@@ -3,8 +3,6 @@ import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import {getEvent} from '../actions/single-event';
 import Comments from './comments';
-import  {data} from '../utils/sampleResponse';
-
 
 class SingleEvent extends React.Component {
     componentDidMount() {
@@ -15,7 +13,10 @@ class SingleEvent extends React.Component {
     render() {
         return (
             <div>
-                <p>{data.name}</p>
+                <h3>{this.props.event.name}</h3>
+                <p>{this.props.event.venue}</p>
+                <p>{this.props.event.address}, {this.props.event.city}</p>
+                <img src={this.props.event.img} width="200px"></img>
                 <Comments />
             </div>
         )
@@ -25,9 +26,8 @@ class SingleEvent extends React.Component {
 const mapStateToProps = state => {
     const {currentUser} = state.auth;
     return {
-        // grab the event info from state here
-        username: state.auth.currentUser.username,
-        protectedData: state.protectedData.data
+        event: state.event.selectedEvent,
+        username: state.auth.currentUser.username
     };
 };
 
