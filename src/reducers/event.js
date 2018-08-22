@@ -1,3 +1,5 @@
+
+
 import {
     GET_EVENT_REQUEST,
     GET_EVENT_SUCCESS,
@@ -59,9 +61,7 @@ export default function reducer(state = initialState, action) {
         return {
             ...state,
             loading: false,
-            eventList: [
-                action.event.list
-            ],
+            eventList: action.eventList,
             error: null
         }
     } else if (action.type === GET_EVENT_LIST_ERROR) {
