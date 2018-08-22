@@ -21,7 +21,7 @@ class SingleEvent extends React.Component {
                 <h3>{this.props.event.name}</h3>
                 <p>{this.props.event.venue}</p>
                 <p>{this.props.event.address}, {this.props.event.city}</p>
-                <img src={this.props.event.img} width="200px"></img>
+                <img src={this.props.event.img} width="200px" alt="aubrey graham in a random city"></img>
 
                 <RSVPButton />
 
