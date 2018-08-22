@@ -5,16 +5,18 @@ import {login} from '../actions/auth';
 import Input from './input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 const passwordLength = length({min: 10, max: 72});
+const zipLength = length({min:5, max:5});
 const matchesPassword = matches('password');
 
 export class RegistrationForm extends React.Component {
 
     onSubmit(values) {
         // grabs username, password and zipcode and from redux form
-        const { username, password, zipcode } = values;
+        const { username, password, zip } = values;
 
         // creates a user object 
-        const user = {username, password, zipcode};
+        const user = {username, password, zip};
+        console.log(user);
         return this.props
             .dispatch(registerUser(user))
             .then(() => this.props.dispatch(login(username, password)));
@@ -33,6 +35,13 @@ export class RegistrationForm extends React.Component {
                     type="text"
                     name="username"
                     validate={[required, nonEmpty, isTrimmed]}
+                />
+                <label htmlFor="zip">Zip Code</label>
+                <Field
+                    component={Input}
+                    type="zip"
+                    name="zip"
+                    validate={[required, zipLength, isTrimmed]}
                 />
                 <label htmlFor="password">Password</label>
                 <Field
