@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
-import {fetchProtectedData} from '../actions/protected-data';
+import {getEvent} from '../actions/single-event';
 import Comments from './comments';
 import  {data} from '../utils/sampleResponse';
 
@@ -9,7 +9,7 @@ import  {data} from '../utils/sampleResponse';
 class SingleEvent extends React.Component {
     componentDidMount() {
         // action calls will go here
-        this.props.dispatch(fetchProtectedData());
+        this.props.dispatch(getEvent());
     }
 
     render() {
