@@ -38,7 +38,7 @@ export default function reducer(state = initialState, action) {
                 // date: action.event.date,
                 img: action.event.images[6].url,
                 // description: action.event.description,
-                links: action.event.links
+                links: action.event.outlets
             },
             loading: false,
             error: null

@@ -17,6 +17,7 @@ class SingleEvent extends React.Component {
                 <p>{this.props.event.venue}</p>
                 <p>{this.props.event.address}, {this.props.event.city}</p>
                 <img src={this.props.event.img} width="200px"></img>
+
                 <Comments />
             </div>
         )
