@@ -2,10 +2,14 @@ import {
     GET_EVENT_REQUEST,
     GET_EVENT_SUCCESS,
     GET_EVENT_ERROR,
-    GET_EVENT_LIST_ERROR,
-    GET_EVENT_LIST_SUCCESS,
-    GET_EVENT_LIST_REQUEST
 } from '../actions/single-event'
+
+    
+import {
+    GET_EVENT_LIST_REQUEST,
+    GET_EVENT_LIST_SUCCESS,
+    GET_EVENT_LIST_ERROR,
+} from '../actions/event-list'
 
 const initialState = {
     eventList: [],
