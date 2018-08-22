@@ -1,5 +1,6 @@
 import {} from '../config';
 import { normalizeResponseErrors } from './utils';
+import {data} from '../utils/sampleResponse';
 
 export const GET_EVENT_REQUEST = 'GET_EVENT_REQUEST';
 export const getEventRequest = () => ({
@@ -17,6 +18,12 @@ export const getEventError = err => ({
     type: GET_EVENT_ERROR,
     err
 });
+
+export const getEvent = () => (dispatch) => {
+    dispatch(getEventRequest());
+    dispatch(getEventSuccess(data));
+    //.catch(err => dispatch(getEventError(err)));
+}
 
 //will rewrite this call once server is up and running
 // export const getEvent = () => (dispatch) => {
