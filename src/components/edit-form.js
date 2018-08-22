@@ -1,7 +1,8 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
-// import {editUser} from '../actions/users';
-// import {login} from '../actions/auth';
+import { connect } from 'react-redux';
+import {editUser} from '../actions/users';
+import {login} from '../actions/auth';
 import Input from './input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 const passwordLength = length({min: 10, max: 72});
@@ -15,7 +16,11 @@ export class EditForm extends React.Component {
         const { password, zip } = values;
 
         // creates a user object 
-        const user = {password, zip};
+        const user = {
+            username: this.props.username,
+            password, 
+            zip,
+        };
         console.log(user);
         // return this.props
         //     .dispatch(editUser(user))
@@ -60,8 +65,14 @@ export class EditForm extends React.Component {
     }
 }
 
-export default reduxForm({
+const mapStateToProps = state => ({
+    username: state.auth.currentUser.username,
+});
+
+EditForm = reduxForm({
     form: 'edit',
     onSubmitFail: (errors, dispatch) =>
         dispatch(focus('edit', Object.keys(errors)[0]))
 })(EditForm);
+
+export default connect(mapStateToProps)(EditForm);
