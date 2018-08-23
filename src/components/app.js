@@ -8,6 +8,7 @@ import Dashboard from './dashboard';
 import RegistrationPage from './registration-page';
 import EditPage from './edit-page';
 import {refreshAuthToken} from '../actions/auth';
+import SingleEvent from './single-event';
 
 export class App extends React.Component {
     componentDidUpdate(prevProps) {
@@ -47,6 +48,7 @@ export class App extends React.Component {
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/register" component={RegistrationPage} />
                 <Route exact path="/edit" component={EditPage} />
+                <Route exact path="/dashboard/:id" component={SingleEvent} />
             </div>
         );
     }

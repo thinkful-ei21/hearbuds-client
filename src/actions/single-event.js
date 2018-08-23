@@ -1,4 +1,4 @@
-import {} from '../config';
+import {API_BASE_URL} from '../config';
 import { normalizeResponseErrors } from './utils';
 import {data} from '../utils/sampleResponse';
 
@@ -19,11 +19,31 @@ export const getEventError = err => ({
     err
 });
 
-export const getEvent = () => (dispatch) => {
+export const getEvent = (eventId) => (dispatch) => {
     dispatch(getEventRequest());
-    dispatch(getEventSuccess(data));
-    //.catch(err => dispatch(getEventError(err)));
-}
+    // make a fetch request to the graphql server
+    return fetch(`${API_BASE_URL}/graphql`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            // pass in the query to graphql
+            // query: `{ getById(id: ${eventId}) { id name type}}`
+            query: `{getById(id: "${eventId}") { id name type } }`
+        })
+    })
+    // makes the response errors more readable
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(({ data }) => {
+        // passes the response data into get event success
+        dispatch(getEventSuccess(data))
+    })
+    // catches the error
+    .catch(err => dispatch(getEventError(err)));
+};
 
 //will rewrite this call once server is up and running
 // export const getEvent = () => (dispatch) => {

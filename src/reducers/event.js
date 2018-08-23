@@ -33,24 +33,25 @@ export default function reducer(state = initialState, action) {
         return {
             ...state,
             selectedEvent: {
-                name: action.event.name,
-                venue: action.event._embedded.venues[0].name,
-                address: action.event._embedded.venues[0].address.line1,
-                city: action.event._embedded.venues[0].city.name,
-                // date: action.event.date,
-                img: action.event.images[6].url,
-                // description: action.event.description,
-                links: action.event.outlets
+                // id: action.event.id,
+                // name: action.event.name,
+                // venue: action.event._embedded.venues[0].name,
+                // address: action.event._embedded.venues[0].address.line1,
+                // city: action.event._embedded.venues[0].city.name,
+                // // date: action.event.date,
+                // img: action.event.images[6].url,
+                // // description: action.event.description,
+                // links: action.event.outlets
+                event: action.event.getById
             },
             loading: false,
             error: null
         }
     } else if (action.type === GET_EVENT_ERROR) {
-        console.log(action.err);
         return {
             ...state,
             loading: false,
-            error: action.err
+            error: action.err.errors[0].message
         }
     } else if (action.type === GET_EVENT_LIST_REQUEST) {
         return {
