@@ -3,8 +3,7 @@ import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import {getEvent} from '../actions/single-event';
 import Comments from './comments';
-import  {data} from '../utils/sampleResponse';
-
+import RSVPButton from './rsvp-button';
 
 class SingleEvent extends React.Component {
     componentDidMount() {
@@ -14,10 +13,21 @@ class SingleEvent extends React.Component {
 
     render() {
         return (
-            <div>
-                <p>{data.name}</p>
+            // React Fragments work like divs to wrap elements
+            // Link to React Fragment docs: 
+            // https://reactjs.org/docs/fragments.html
+            <React.Fragment>
+                {/* this is all dummy data for now */}
+                <h3>{this.props.event.name}</h3>
+                <p>{this.props.event.venue}</p>
+                <p>{this.props.event.address}, {this.props.event.city}</p>
+                <img src={this.props.event.img} width="200px" alt="aubrey graham in a random city"></img>
+
+                <RSVPButton />
+
                 <Comments />
-            </div>
+
+            </React.Fragment>
         )
     }
 }
@@ -25,9 +35,8 @@ class SingleEvent extends React.Component {
 const mapStateToProps = state => {
     const {currentUser} = state.auth;
     return {
-        // grab the event info from state here
-        username: state.auth.currentUser.username,
-        protectedData: state.protectedData.data
+        event: state.event.selectedEvent,
+        username: state.auth.currentUser.username
     };
 };
 
