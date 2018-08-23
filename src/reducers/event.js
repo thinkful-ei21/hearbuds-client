@@ -33,6 +33,7 @@ export default function reducer(state = initialState, action) {
         return {
             ...state,
             selectedEvent: {
+                id: action.event.id,
                 name: action.event.name,
                 venue: action.event._embedded.venues[0].name,
                 address: action.event._embedded.venues[0].address.line1,
