@@ -42,13 +42,12 @@ export default function reducer(state = initialState, action) {
                 // img: action.event.images[6].url,
                 // // description: action.event.description,
                 // links: action.event.outlets
-                event: action.event
+                event: action.event.getById
             },
             loading: false,
             error: null
         }
     } else if (action.type === GET_EVENT_ERROR) {
-        console.log(action.err);
         return {
             ...state,
             loading: false,
