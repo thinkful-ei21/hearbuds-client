@@ -1,6 +1,5 @@
 import {API_BASE_URL} from '../config';
 import { normalizeResponseErrors } from './utils';
-import {data} from '../utils/sampleResponse';
 
 export const GET_EVENT_REQUEST = 'GET_EVENT_REQUEST';
 export const getEventRequest = () => ({
@@ -31,7 +30,7 @@ export const getEvent = (eventId) => (dispatch) => {
         body: JSON.stringify({
             // pass in the query to graphql
             // query: `{ getById(id: ${eventId}) { id name type}}`
-            query: `{getById(id: "${eventId}") { id name type } }`
+            query: `{getById(id: "${eventId}") { id name type _embedded { name id } url dates { start { localDate } } } }`
         })
     })
     // makes the response errors more readable
