@@ -1,5 +1,3 @@
-
-
 import {
     GET_EVENT_REQUEST,
     GET_EVENT_SUCCESS,
@@ -10,12 +8,19 @@ import {
 import {
     GET_EVENT_LIST_REQUEST,
     GET_EVENT_LIST_SUCCESS,
-    GET_EVENT_LIST_ERROR,
+    GET_EVENT_LIST_ERROR
 } from '../actions/event-list'
+
+import {
+    GET_COMMENTS_REQUEST,
+    GET_COMMENTS_SUCCESS,
+    GET_COMMENTS_ERROR
+} from '../actions/comments'
 
 const initialState = {
     eventList: null,
     selectedEvent: null,
+    comments: null,
     loading: false,
     error: null
     }
@@ -45,7 +50,6 @@ export default function reducer(state = initialState, action) {
             error: null
         }
     } else if (action.type === GET_EVENT_ERROR) {
-        console.log(action.err);
         return {
             ...state,
             loading: false,
@@ -59,7 +63,6 @@ export default function reducer(state = initialState, action) {
             error: null
         }
     } else if (action.type === GET_EVENT_LIST_SUCCESS) {
-        console.log(action.eventList);
         return {
             ...state,
             loading: false,
@@ -67,7 +70,26 @@ export default function reducer(state = initialState, action) {
             error: null
         }
     } else if (action.type === GET_EVENT_LIST_ERROR) {
-        console.log(action.err)
+        return {
+            ...state,
+            loading: false,
+            error: action.err.errors[0].message
+        }
+    } else if (action.type === GET_COMMENTS_REQUEST) {
+        return {
+            ...state,
+            loading: true,
+            error: null
+        }
+    } else if (action.type === GET_COMMENTS_SUCCESS) {
+        console.log(action.comments);
+        return {
+            ...state,
+            loading: false,
+            eventList: action.comments,
+            error: null
+        }
+    } else if (action.type === GET_COMMENTS_ERROR) {
         return {
             ...state,
             loading: false,
