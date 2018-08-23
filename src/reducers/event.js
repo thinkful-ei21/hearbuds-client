@@ -52,7 +52,7 @@ export default function reducer(state = initialState, action) {
         return {
             ...state,
             loading: false,
-            error: action.err
+            error: action.err.errors[0].message
         }
     } else if (action.type === GET_EVENT_LIST_REQUEST) {
         return {

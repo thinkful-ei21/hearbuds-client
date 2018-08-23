@@ -30,7 +30,7 @@ export const getEvent = () => (dispatch) => {
         },
         body: JSON.stringify({
             // pass in the query to graphql
-            query: "{ getEvents { id name images url} }"
+            query: `{ getById(id: "Z7r9jZ1Ae8AGe") { id name type}}`
         })
     })
     // makes the response errors more readable
