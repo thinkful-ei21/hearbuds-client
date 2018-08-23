@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import requiresLogin from './requires-login';
+import requiresLogin from './requires-login';
 import {getEventList} from '../actions/event-list'
 import {Redirect} from 'react-router-dom';
 
@@ -44,7 +44,7 @@ export class EventList extends React.Component {
                return <ul key={index.toString() + 'ul'}>
                     {this.state.redirect}
                     <li className='event-name' key={index.toString()+'name'}>{event.name}</li>
-                    {/* <li className='event-date' key={index.toString()+'date'}>{event.dates.start.localDate}</li> */}
+                    <li className='event-date' key={index .toString()+'date'}>{event.dates.start.localDate}</li>
                     <img className='event-img' src={event.images[0].url} alt='event artist' />
                     {/* <li className='event-venue'key={index.toString()+'venue'}>{event.venues[0].name}</li> */}
                     {/* <li className='event-rsvp-count' key={index.toString()+'rsvp'}>RSVPs:  {event.rsvpCount}</li> */}
@@ -66,5 +66,5 @@ const mapStateToProps = state => {
     };
 }
 
-export default connect(mapStateToProps)(EventList);
-// export default requiresLogin()(connect(mapStateToProps)(EventList));
+
+export default requiresLogin()(connect(mapStateToProps)(EventList));

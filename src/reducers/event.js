@@ -15,7 +15,7 @@ import {
 
 const initialState = {
     eventList: null,
-    selectedEvent: {},
+    selectedEvent: null,
     loading: false,
     error: null
     }
@@ -67,10 +67,11 @@ export default function reducer(state = initialState, action) {
             error: null
         }
     } else if (action.type === GET_EVENT_LIST_ERROR) {
+        console.log(action.err)
         return {
             ...state,
             loading: false,
-            error: action.err
+            error: action.err.errors[0].message
         }
     }
     return state;
