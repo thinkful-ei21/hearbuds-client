@@ -19,7 +19,7 @@ export const getEventError = err => ({
     err
 });
 
-export const getEvent = () => (dispatch) => {
+export const getEvent = (eventId) => (dispatch) => {
     dispatch(getEventRequest());
     // make a fetch request to the graphql server
     return fetch(`${API_BASE_URL}/graphql`, {
@@ -30,7 +30,8 @@ export const getEvent = () => (dispatch) => {
         },
         body: JSON.stringify({
             // pass in the query to graphql
-            query: `{ getById(id: "Z7r9jZ1Ae8AGe") { id name type}}`
+            // query: `{ getById(id: ${eventId}) { id name type}}`
+            query: `{getById(id: "${eventId}") { id name type } }`
         })
     })
     // makes the response errors more readable

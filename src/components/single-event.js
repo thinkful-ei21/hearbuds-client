@@ -8,7 +8,10 @@ import RSVPButton from './rsvp-button';
 class SingleEvent extends React.Component {
     componentDidMount() {
         // action calls will go here
-        this.props.dispatch(getEvent());
+
+        // grabs the id from the url
+        const eventId = this.props.match.params.id;
+        this.props.dispatch(getEvent(eventId));
     }
 
     render() {
