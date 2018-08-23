@@ -33,15 +33,16 @@ export default function reducer(state = initialState, action) {
         return {
             ...state,
             selectedEvent: {
-                id: action.event.id,
-                name: action.event.name,
-                venue: action.event._embedded.venues[0].name,
-                address: action.event._embedded.venues[0].address.line1,
-                city: action.event._embedded.venues[0].city.name,
-                // date: action.event.date,
-                img: action.event.images[6].url,
-                // description: action.event.description,
-                links: action.event.outlets
+                // id: action.event.id,
+                // name: action.event.name,
+                // venue: action.event._embedded.venues[0].name,
+                // address: action.event._embedded.venues[0].address.line1,
+                // city: action.event._embedded.venues[0].city.name,
+                // // date: action.event.date,
+                // img: action.event.images[6].url,
+                // // description: action.event.description,
+                // links: action.event.outlets
+                event: action.event
             },
             loading: false,
             error: null
