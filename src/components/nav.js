@@ -23,11 +23,11 @@ export class Nav extends React.Component {
             )
         }
         return (
-            <div className="header-bar">
+            <header role="banner" className="header-bar">
                 <Link to="/dashboard"><h1>Hearbuds</h1></Link>
                 {logOutButton}
                 {editProfileLink}
-            </div>
+            </header>
         );
     }
 }

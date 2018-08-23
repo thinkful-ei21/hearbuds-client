@@ -29,4 +29,5 @@ const mapStateToProps = state => {
     };
 };
 
+// export default connect(mapStateToProps)(Dashboard);
 export default requiresLogin()(connect(mapStateToProps)(Dashboard));

@@ -14,7 +14,7 @@ import {
 } from '../actions/event-list'
 
 const initialState = {
-    eventList: [],
+    eventList: null,
     selectedEvent: {},
     loading: false,
     error: null
@@ -54,14 +54,16 @@ export default function reducer(state = initialState, action) {
     } else if (action.type === GET_EVENT_LIST_REQUEST) {
         return {
             ...state,
+            eventList: null,
             loading: true,
             error: null
         }
     } else if (action.type === GET_EVENT_LIST_SUCCESS) {
+        console.log(action.eventList);
         return {
             ...state,
             loading: false,
-            eventList: action.eventList,
+            eventList: action.eventList.getEvents,
             error: null
         }
     } else if (action.type === GET_EVENT_LIST_ERROR) {
