@@ -12,7 +12,19 @@ class SingleEvent extends React.Component {
     }
 
     render() {
+        // destructuring props 
+        const { loading, error, event } = this.props;
+
+        if (loading) {
+            return <div>Loading event...</div>;
+        }
+
+        if (error) {
+            return <div>{this.props.error}</div>;
+        }
+
         return (
+
             // React Fragments work like divs to wrap elements
             // Link to React Fragment docs: 
             // https://reactjs.org/docs/fragments.html
@@ -36,7 +48,8 @@ const mapStateToProps = state => {
     const {currentUser} = state.auth;
     return {
         event: state.event.selectedEvent,
-        username: state.auth.currentUser.username
+        loading: state.event.loading,
+        error: state.event.error
     };
 };
 
