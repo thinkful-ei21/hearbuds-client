@@ -22,9 +22,9 @@ export class EditForm extends React.Component {
             zip,
         };
         console.log(user);
-        // return this.props
-        //     .dispatch(editUser(user))
-        //     .then(() => this.props.dispatch(login(username, password)));
+        return this.props
+            .dispatch(editUser(user))
+            .then(() => this.props.dispatch(login(user.username, user.password)));
     }
 
     render() {
