@@ -10,7 +10,9 @@ import RSVPButton from './rsvp-button';
 class SingleEvent extends React.Component {
     componentDidMount() {
         // action calls will go here
-        this.props.dispatch(getEvent());
+        const id  = this.props.match.params.id;
+        console.log(id);
+        this.props.dispatch(getEvent(id));
     }
 
     render() {
@@ -56,10 +58,10 @@ class SingleEvent extends React.Component {
 const mapStateToProps = state => {
     return {
         event: state.event.selectedEvent,
-        // username: state.auth.currentUser.username,
-        // protectedData: state.protectedData.data
+        username: state.auth.currentUser.username,
+        protectedData: state.protectedData.data
     };
 };
 
-export default connect(mapStateToProps)(SingleEvent);
-// export default requiresLogin()(connect(mapStateToProps)(SingleEvent));
+// export default connect(mapStateToProps)(SingleEvent);
+export default requiresLogin()(connect(mapStateToProps)(SingleEvent));

@@ -20,7 +20,7 @@ import {
 const initialState = {
     eventList: null,
     selectedEvent: null,
-    comments: "this is a comment",
+    comments: null,
     loading: false,
     error: null
     }
@@ -34,7 +34,7 @@ export default function reducer(state = initialState, action) {
             error: null
         }
     } else if (action.type === GET_EVENT_SUCCESS) {
-        // console.log(action.event);
+        console.log(action.event);
         return {
             ...state,
             selectedEvent: {
@@ -76,27 +76,27 @@ export default function reducer(state = initialState, action) {
         return {
             ...state,
             loading: false,
-            error: action.err.errors[0].message
+            error: "an error occured"
         }
     } else if (action.type === GET_COMMENTS_REQUEST) {
         return {
             ...state,
+            comments: null,
             loading: true,
             error: null
         }
     } else if (action.type === GET_COMMENTS_SUCCESS) {
-        console.log("getCommentsSuccess - ", action.comments);
         return {
             ...state,
             loading: false,
-            eventList: action.comments,
+            comments: action.comments,
             error: null
         }
     } else if (action.type === GET_COMMENTS_ERROR) {
         return {
             ...state,
             loading: false,
-            error: action.err.errors[0].message
+            error: "an error occured"
         }
     }
     return state;

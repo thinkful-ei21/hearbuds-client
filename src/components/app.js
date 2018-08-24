@@ -45,10 +45,10 @@ export class App extends React.Component {
             <div className="app">
                 <Nav />
                 <Route exact path="/" component={LandingPage} />
-                <Route path="/dashboard/" component={SingleEvent} />
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/register" component={RegistrationPage} />
                 <Route exact path="/edit" component={EditPage} />
+                <Route exact path="/dashboard/:id" component={SingleEvent} />
             </div>
         );
     }

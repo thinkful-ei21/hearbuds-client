@@ -40,5 +40,8 @@ export const getEventList = () => (dispatch) => {
             console.log(data);
             dispatch(getEventListSuccess(data))
         })
-        .catch(err => dispatch(getEventListError(err)));
+        .catch(err => {
+            console.log('an error occured')
+            dispatch(getEventListError(err))
+        });
 };

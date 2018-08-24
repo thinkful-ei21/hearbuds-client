@@ -30,13 +30,14 @@ export const getEvent = (eventId) => (dispatch) => {
         body: JSON.stringify({
             // pass in the query to graphql
             // query: `{ getById(id: ${eventId}) { id name type}}`
-            query: `{getById(id: "${eventId}") { id name type _embedded { name id } url dates { start { localDate } } } }`
+            query: `{getById(id: "${eventId}") { id name type url dates { start { localDate } } } }`
         })
     })
     // makes the response errors more readable
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(({ data }) => {
+        console.log(data);
         // passes the response data into get event success
         dispatch(getEventSuccess(data))
     })
@@ -44,27 +45,3 @@ export const getEvent = (eventId) => (dispatch) => {
     .catch(err => dispatch(getEventError(err)));
 };
 
-//will rewrite this call once server is up and running
-// export const getEvent = () => (dispatch) => {
-//     dispatch(getEventRequest());
-//     console.log('getEvent fired', API_KEY)
-//     const params = {
-//         'countryCode': 'US',
-//         'apikey': API_KEY,
-//         'id': 'Z7r9jZ1Ae8AGe'
-//     }
-//     let url = new URL(`${EVENT_API_BASE_URL}`);
-//     Object.keys(params).forEach(key => {
-//         console.log(params[key]);
-//         return url.searchParams.append(key, params[key])
-//     })
-//         return fetch(url, {
-//             method: 'GET',
-//             mode: 'cors',
-//             'Content-Type': 'application/json'
-//         })
-//         .then(res => normalizeResponseErrors(res))
-//         .then(res => res.json())
-//         .then(event => dispatch(getEventSuccess(event)))
-//         .catch(err => dispatch(getEventError(err)));
-// };
