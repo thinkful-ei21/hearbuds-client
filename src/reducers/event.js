@@ -65,7 +65,7 @@ export default function reducer(state = initialState, action) {
         return {
             ...state,
             loading: false,
-            eventList: action.eventList.getEvents,
+            eventList: action.eventList.getByZip,
             error: null
         }
     } else if (action.type === GET_EVENT_LIST_ERROR) {
