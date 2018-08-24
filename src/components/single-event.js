@@ -28,27 +28,34 @@ class SingleEvent extends React.Component {
         }
 
         if (event) {
+            //  <p>{this.props.event.venue}</p>
+            // <p>{this.props.event.address}, {this.props.event.city}</p>
+            // <img src={this.props.event.img} width="200px" alt="aubrey graham in a random city"></img> 
             
+            const {name, dates, smallImage, bandLink, ticketLink} = this.props.event.event
+            let bandLinkXml = null;
+            if (bandLink !== null) {
+                bandLinkXml = <a href={bandLink}>Band Website</a>
+            }
+
             return (
                 // React Fragments work like divs to wrap elements
                 // Link to React Fragment docs: 
                 // https://reactjs.org/docs/fragments.html
                 <React.Fragment>
-                    {/* this is all dummy data for now */}
-                    {/* <h3>{this.props.event.name}</h3>
-                    <p>{this.props.event.venue}</p>
-                    <p>{this.props.event.address}, {this.props.event.city}</p>
-                    <img src={this.props.event.img} width="200px" alt="aubrey graham in a random city"></img> */}
+                    
+                    <h1>{name}</h1>
+                    <h3>{dates.start.localDate}</h3>
+                    <img src={smallImage} alt={name} width="200px"></img>
+                    {bandLinkXml}
+                    <a href={ticketLink}>Buy Tickets</a>
 
-                    <h1>{this.props.event.event.name}</h1>
                     
                     <RSVPButton />
-    
                     <Comments />
     
                 </React.Fragment>
             )
-
         }
         return <div>something</div>
 

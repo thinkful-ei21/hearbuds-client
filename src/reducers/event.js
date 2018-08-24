@@ -66,10 +66,6 @@ export default function reducer(state = initialState, action) {
             error: null
         }
     } else if (action.type === GET_EVENT_LIST_SUCCESS) {
-<<<<<<< HEAD
-        console.log(action.eventList.getByZip);
-=======
->>>>>>> b1d2a39c691eb50a6234c0c268134a0ce11fdcb7
         return {
             ...state,
             loading: false,
