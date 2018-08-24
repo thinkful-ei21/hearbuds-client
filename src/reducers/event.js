@@ -29,7 +29,7 @@ export default function reducer(state = initialState, action) {
             error: null
         }
     } else if (action.type === GET_EVENT_SUCCESS) {
-        // console.log(action.event);
+        console.log(action.event.getById);
         return {
             ...state,
             selectedEvent: {
@@ -61,7 +61,7 @@ export default function reducer(state = initialState, action) {
             error: null
         }
     } else if (action.type === GET_EVENT_LIST_SUCCESS) {
-        console.log(action.eventList);
+        console.log(action.eventList.getByZip);
         return {
             ...state,
             loading: false,
