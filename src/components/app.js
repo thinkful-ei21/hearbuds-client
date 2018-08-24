@@ -48,7 +48,11 @@ export class App extends React.Component {
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/register" component={RegistrationPage} />
                 <Route exact path="/edit" component={EditPage} />
+<<<<<<< HEAD
                 <Route path="/dashboard/" component={SingleEvent} />
+=======
+                <Route exact path="/dashboard/:id" component={SingleEvent} />
+>>>>>>> master
             </div>
         );
     }
