@@ -25,15 +25,35 @@ export class EditForm extends React.Component {
         return this.props
             .dispatch(editUser(user))
             .then(() => this.props.dispatch(login(user.username, user.password)));
+            //.then(this.props.submitSucceeded = true);
     }
 
     render() {
+
+        let successMessage;
+        if (this.props.submitSucceeded) {
+            successMessage = (
+                <div className="message message-success">
+                    Information submitted successfully
+                </div>
+            );
+        }
+
+        let errorMessage;
+        if (this.props.error) {
+            errorMessage = (
+                <div className="message message-error">{this.props.error}</div>
+            );
+        }
+
         return (
             <form
                 className="login-form"
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
+                {successMessage}
+                {errorMessage}
                 <label htmlFor="zip">Zip Code</label>
                 <Field
                     component={Input}
