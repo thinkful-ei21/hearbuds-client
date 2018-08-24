@@ -28,10 +28,6 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
     if (action.type === GET_EVENT_REQUEST) {
-<<<<<<< HEAD
-        console.log('getEventRequest - loading');
-=======
->>>>>>> master
         return {
             ...state,
             loading: true,
