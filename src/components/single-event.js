@@ -4,6 +4,7 @@ import requiresLogin from './requires-login';
 import {getEvent} from '../actions/single-event';
 import Comments from './comments';
 import  {data} from '../utils/sampleResponse';
+import RSVPButton from './rsvp-button';
 
 
 class SingleEvent extends React.Component {
@@ -55,10 +56,10 @@ class SingleEvent extends React.Component {
 const mapStateToProps = state => {
     return {
         event: state.event.selectedEvent,
-        username: state.auth.currentUser.username,
-        protectedData: state.protectedData.data
+        // username: state.auth.currentUser.username,
+        // protectedData: state.protectedData.data
     };
 };
 
-export default connect(mapStateToProps(SingleEvent));
+export default connect(mapStateToProps)(SingleEvent);
 // export default requiresLogin()(connect(mapStateToProps)(SingleEvent));

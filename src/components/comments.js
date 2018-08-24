@@ -33,6 +33,6 @@ const mapStateToProps = state => {
         loading: state.event.loading,
         error: state.event.error
     };
-}
-
-export default requiresLogin()(connect(mapStateToProps)(Comments));
+};
+export default connect(mapStateToProps)(Comments);
+// export default requiresLogin()(connect(mapStateToProps)(Comments));

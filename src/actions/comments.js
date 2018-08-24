@@ -21,6 +21,7 @@ export const getCommentstError = err => ({
 
 export const getComments = () => (dispatch) => {
     dispatch(getCommentsRequest());
+    console.log(comments, "get comments fired");
     dispatch(getCommentsSuccess(comments));
     
     // fetch(`${API_BASE_URL}/graphql`, {

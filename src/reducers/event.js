@@ -20,7 +20,7 @@ import {
 const initialState = {
     eventList: null,
     selectedEvent: null,
-    comments: null,
+    comments: "this is a comment",
     loading: false,
     error: null
     }
