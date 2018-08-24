@@ -31,7 +31,8 @@ export const getEventList = () => (dispatch) => {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                query: "{getEvents {id name images {url}  dates {start {localDate}}}}"
+                query: `{getByZip(zip:60615) {id name smallImage dates {start {localDate}}   }  }`
+                // query: "{getEvents {id name images {url}  dates {start {localDate}}}}"
             })
         })
         .then(res => normalizeResponseErrors(res))
