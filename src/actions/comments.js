@@ -1,5 +1,5 @@
-import {normalizeResponseErrors} from '../actions/utils'
-import {API_BASE_URL} from  '../config';
+// import {normalizeResponseErrors} from '../actions/utils'
+// import {API_BASE_URL} from  '../config';
 import {comments} from '../utils/sampleComments'
 
 export const GET_COMMENTS_REQUEST = 'GET_COMMENTS_REQUEST';

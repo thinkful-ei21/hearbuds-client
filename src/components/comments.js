@@ -22,9 +22,9 @@ export class Comments extends React.Component {
         // for (let username in comments) {
         //     return <li>{username}: {comments[username]}</li>
         // }
-        return <h1>Why won't this render how I want it to?</h1>
+        return <h1>Why won't this render how I want it to?}</h1>
+    } 
     
-    }
 }
 
 const mapStateToProps = state => {

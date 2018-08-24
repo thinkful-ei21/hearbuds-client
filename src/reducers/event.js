@@ -28,14 +28,14 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
     if (action.type === GET_EVENT_REQUEST) {
-        console.log('loading');
+        console.log('getEventRequest - loading');
         return {
             ...state,
             loading: true,
             error: null
         }
     } else if (action.type === GET_EVENT_SUCCESS) {
-        console.log(action.event);
+        console.log("getEventSuccess - ", action.event);
         return {
             ...state,
             selectedEvent: {
@@ -82,7 +82,7 @@ export default function reducer(state = initialState, action) {
             error: null
         }
     } else if (action.type === GET_COMMENTS_SUCCESS) {
-        console.log(action.comments);
+        console.log("getCommentsSuccess - ", action.comments);
         return {
             ...state,
             loading: false,
