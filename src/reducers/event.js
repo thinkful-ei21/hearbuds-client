@@ -34,7 +34,7 @@ export default function reducer(state = initialState, action) {
             error: null
         }
     } else if (action.type === GET_EVENT_SUCCESS) {
-        console.log("getEventSuccess - ", action.event);
+        // console.log(action.event);
         return {
             ...state,
             selectedEvent: {
