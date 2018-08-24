@@ -54,7 +54,7 @@ export class EventList extends React.Component {
             }))
 
         }
-        return <h1>Why won't this render how I want it to?</h1>
+        return null
         }
     }
 

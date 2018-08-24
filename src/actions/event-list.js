@@ -3,6 +3,7 @@ import {normalizeResponseErrors} from '../actions/utils'
 import {API_BASE_URL} from  '../config';
 
 
+
 export const GET_EVENT_LIST_REQUEST = 'GET_EVENT_LIST_REQUEST';
 export const getEventListRequest = () => ({
     type: GET_EVENT_LIST_REQUEST
@@ -40,5 +41,8 @@ export const getEventList = () => (dispatch) => {
             console.log(data);
             dispatch(getEventListSuccess(data))
         })
-        .catch(err => dispatch(getEventListError(err)));
+        .catch(err => {
+            console.log('an error occured')
+            dispatch(getEventListError(err))
+        });
 };
