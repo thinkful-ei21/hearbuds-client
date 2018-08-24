@@ -12,10 +12,10 @@ export class RegistrationForm extends React.Component {
 
     onSubmit(values) {
         // grabs username, password and zipcode and from redux form
-        const { username, password, zip } = values;
+        const { username, password, zip, email } = values;
 
         // creates a user object 
-        const user = {username, password, zip};
+        const user = {username, password, zip, email};
         console.log(user);
         return this.props
             .dispatch(registerUser(user))
@@ -34,6 +34,13 @@ export class RegistrationForm extends React.Component {
                     component={Input}
                     type="text"
                     name="username"
+                    validate={[required, nonEmpty, isTrimmed]}
+                />
+                <label htmlFor="email">Email</label>
+                <Field
+                    component={Input}
+                    type="text"
+                    name="email"
                     validate={[required, nonEmpty, isTrimmed]}
                 />
                 <label htmlFor="zip">Zip Code</label>

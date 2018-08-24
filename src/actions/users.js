@@ -26,10 +26,14 @@ export const registerUser = user => dispatch => {
         });
 };
 
-export const editUser = user => dispatch => {
-    return fetch(`${API_BASE_URL}/users`, {
+export const editUser = user => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    //console.log(JSON.stringify(user));
+    return fetch(`${API_BASE_URL}/users/edit`, {
         method: 'PUT',
         headers: {
+            // Provide our auth token as credentials
+            Authorization: `Bearer ${authToken}`,
             'content-type': 'application/json'
         },
         body: JSON.stringify(user)
@@ -37,6 +41,7 @@ export const editUser = user => dispatch => {
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .catch(err => {
+            //console.log(err);
             const {reason, message, location} = err;
             if (reason === 'ValidationError') {
                 // Convert ValidationErrors into SubmissionErrors for Redux Form
@@ -48,3 +53,5 @@ export const editUser = user => dispatch => {
             }
         });
 };
+
+
