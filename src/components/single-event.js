@@ -25,10 +25,11 @@ class SingleEvent extends React.Component {
 const mapStateToProps = state => {
     const {currentUser} = state.auth;
     return {
-        // grab the event info from state here
+        event: state.event.selectedEvent,
         username: state.auth.currentUser.username,
         protectedData: state.protectedData.data
     };
 };
 
-export default requiresLogin()(connect(mapStateToProps)(SingleEvent));
+export default connect(mapStateToProps(SingleEvent));
+// export default requiresLogin()(connect(mapStateToProps)(SingleEvent));

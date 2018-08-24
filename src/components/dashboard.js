@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import requiresLogin from './requires-login';
+// import requiresLogin from './requires-login';
 import {fetchProtectedData} from '../actions/protected-data';
 import EventList from './event-list';
 
@@ -29,5 +29,5 @@ const mapStateToProps = state => {
     };
 };
 
-// export default connect(mapStateToProps)(Dashboard);
-export default requiresLogin()(connect(mapStateToProps)(Dashboard));
+export default connect(mapStateToProps)(Dashboard);
+// export default requiresLogin()(connect(mapStateToProps)(Dashboard));
