@@ -18,14 +18,16 @@ export const getEventError = err => ({
     err
 });
 
-export const getEvent = (eventId) => (dispatch) => {
+export const getEvent = (eventId) => (dispatch, getState) => {
     dispatch(getEventRequest());
+    const authToken = getState().auth.authToken;
     // make a fetch request to the graphql server
     return fetch(`${API_BASE_URL}/graphql`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${authToken}`
         },
         body: JSON.stringify({
             // pass in the query to graphql
