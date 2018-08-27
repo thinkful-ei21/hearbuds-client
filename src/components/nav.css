@@ -1,13 +1,12 @@
 .logo-button {
     width: inherit;
-    padding: 20px;
     border-radius: 3%;
     font-size: 0.8em;
 }
 
 a.logo-button:link, a.logo-button:visited {
     color: #f5f1df;
-    padding: 14px 25px;
+    padding: 5px 25px;
     text-align: center; 
     text-decoration: none;
     display: inline-block;
