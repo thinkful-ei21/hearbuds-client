@@ -1,0 +1,20 @@
+.logo-button {
+    width: inherit;
+    padding: 20px;
+    float: left;
+    border-radius: 3%;
+    font-size: 30px;
+}
+
+a.logo-button:link, a.logo-button:visited {
+    /* background-color: #8f4d3b; */
+    color: #f5f1df;
+    padding: 14px 25px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+}
+
+a.logo-button:hover, a.logo-button:active {
+    background-color: #8f4d3b;
+}

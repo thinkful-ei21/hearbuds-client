@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
 import {Link} from 'react-router-dom';
+import './nav.css';
 
 export class Nav extends React.Component {
     logOut() {
@@ -23,11 +24,18 @@ export class Nav extends React.Component {
             )
         }
         return (
-            <header role="banner" className="header-bar">
-                <Link to="/dashboard"><h1>Hearbuds</h1></Link>
-                {logOutButton}
-                {editProfileLink}
-            </header>
+            <React.Fragment>
+
+                <Link to="/dashboard" className="logo-button">Hearbuds</Link>
+                
+                <div>
+                    
+                    {logOutButton}
+                    
+                    {editProfileLink}
+                </div>
+
+            </React.Fragment>
         );
     }
 }
