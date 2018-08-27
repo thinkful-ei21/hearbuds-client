@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 export class HamburgerMenu extends React.Component {
+
     logOut() {
         this.props.dispatch(clearAuth());
         clearAuthToken();
@@ -26,7 +27,7 @@ export class HamburgerMenu extends React.Component {
 
         return (
             <div className="toggle">
-
+                <input type="checkbox" />
                 <div className="menu"></div>
                 <div className="menu"></div>
                 <div className="menu"></div>

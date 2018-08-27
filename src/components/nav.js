@@ -13,24 +13,11 @@ export class Nav extends React.Component {
     }
 
     render() {
-        // Only render the log out button if we are logged in
-        let logOutButton;
-        let editProfileLink;
-        if (this.props.loggedIn) {
-            logOutButton = (
-                <button onClick={() => this.logOut()}>Log out</button>
-            );
-            editProfileLink = (
-                <Link to="/edit">Edit Profile</Link>
-            )
-        }
         return (
             <nav>
-
                 <Link to="/dashboard" className="logo-button"><h1>Hearbuds</h1></Link>
 
                 <HamburgerMenu />
-
             </nav>
         );
     }
