@@ -1,4 +1,5 @@
 .logo-button {
+    display: inline;
     width: inherit;
     border-radius: 3%;
     font-size: 0.8em;
@@ -14,4 +15,16 @@ a.logo-button:link, a.logo-button:visited {
 
 a.logo-button:hover, a.logo-button:active {
     background-color: #8f4d3b;
+}
+
+div.menu {
+    width: 35px;
+    height: 5px;
+    background-color: #f5f1df;
+    margin: 6px 0;
+}
+
+div.toggle {
+    float: right;
+    padding: 14px 20px;
 }
