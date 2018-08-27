@@ -1,10 +1,22 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Dosis', sans-serif;
   box-sizing: border-box;
-  /* display: flex;
-  justify-content: center; */
+  background-image: url("https://s3.amazonaws.com/fasfawefaf/yvette-de-wit-118721-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  /* background-repeat: no-repeat; */
+  /* background-size: 100vw 100vh; */
+
+  background-attachment: fixed;
+}
+
+@media only screen and (min-width: 650px) {
+  body {
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
+  }
 }
 
 

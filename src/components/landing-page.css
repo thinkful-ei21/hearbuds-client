@@ -1,14 +1,9 @@
-body {
-    background-image: url("https://s3.amazonaws.com/fasfawefaf/yvette-de-wit-118721-unsplash.jpg");
-    background-repeat: no-repeat;
-    background-size: 100vw 100vh;
-    background-attachment: fixed;
-}
 
 h2 {
-    font-size:25px;
+    margin-top: 40px;
+    font-size:30px;
     color: #f5f1df;    
-    width: 275px;
+    width: 250px;
     margin: 0 auto;
 }
 
@@ -42,28 +37,44 @@ input {
 a {
     display: block;
     color: #f5f1df;
-    width: 60px;
-    margin: 0 auto;
 }
 
 button {
-    color: #f5f1df;;
+    color: #f5f1df;
     padding: 5px;
     background-color: rgb(72,52,58);
     border: 1px solid #f5f1df;
     border-radius: 3%;
 }
 
-/* @media only screen and (min-width: 650px) {
+.button-container {
+    width: 50px;
+    margin: 0 auto;
+}
+
+.register-link {
+    color: rgb(72,52,58);
+    width: 50px;
+    margin: 0 auto;
+}
+
+.login-link {
+    display: block;
+    color: #f5f1df;
+    width: 35px;
+    margin: 0 auto;
+}
+
+@media only screen and (min-width: 650px) {
     form {
         width: 300px;
         margin: 50px auto;
         
     }
-
-    label .form-input {
-      width: 100px;
-      margin: 0 auto;
+    
+    .input-container {
+        width: 140px;
+        margin: 0 auto;
     }
-} */
+}
 
