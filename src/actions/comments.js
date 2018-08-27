@@ -1,6 +1,7 @@
-// import {normalizeResponseErrors} from '../actions/utils'
-// import {API_BASE_URL} from  '../config';
-import {comments} from '../utils/sampleComments'
+import {normalizeResponseErrors} from '../actions/utils'
+import {API_BASE_URL} from  '../config';
+import {comments} from '../utils/sampleComments';
+import { loadAuthToken } from '../local-storage';
 
 export const GET_COMMENTS_REQUEST = 'GET_COMMENTS_REQUEST';
 export const getCommentsRequest = () => ({
@@ -14,14 +15,70 @@ export const getCommentsSuccess = (comments) => ({
 });
 
 export const GET_COMMENTS_ERROR = 'GET_COMMENTS_ERROR';
-export const getCommentstError = err => ({
+export const getCommentsError = err => ({
     type: GET_COMMENTS_ERROR,
     err
 });
 
-export const getComments = () => (dispatch) => {
+export const SET_COMMENT_SUCCESS = 'SET_COMMENT_SUCCESS';
+export const setCommentSuccess = (comment) => ({
+    type: SET_COMMENT_REQUEST,
+    comment
+});
+
+export const SET_COMMENT_ERROR = 'SET_COMMENT_ERROR';
+export const setCommentError = () => ({
+    type: SET_COMMENT_ERROR
+});
+
+export const SET_COMMENT_REQUEST = 'SET_COMMENT_REQUEST';
+export const setCommentRequest = () => ({
+    type: SET_COMMENT_REQUEST
+})
+
+export const setComment = (body) => (dispatch, getState) => {
+    dispatch(setCommentRequest());
+    const authToken = loadAuthToken();
+    const eventId = getState().event.selectedEvent.event.id;
+    let query = `
+        mutation {
+            setComment(userId: "${authToken}", body: "${body}", eventId: "${eventId}")
+        }
+    `
+    fetch(`${API_BASE_URL}/graphql`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        },
+        body: JSON.stringify({query})
+    })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(({data}) => {
+        console.log(data);
+        dispatch(setCommentSuccess(data))
+    })
+    .catch(err => {
+        console.log('an error occurred')
+        dispatch(setCommentError(err))
+    })
+}
+
+export const getComments = (body) => (dispatch) => {
     dispatch(getCommentsRequest());
-    console.log(comments, "get comments fired");
+    fetch(`${API_BASE_URL}/graphql`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            // Authorization: `Bearer ${authToken}`
+        },
+        body: JSON.stringify({
+
+        })
+    })
     dispatch(getCommentsSuccess(comments));
     
     // fetch(`${API_BASE_URL}/graphql`, {
