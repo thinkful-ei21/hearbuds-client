@@ -25,15 +25,13 @@ export class Nav extends React.Component {
             )
         }
         return (
-            <React.Fragment>
+            <nav>
 
                 <Link to="/dashboard" className="logo-button"><h1>Hearbuds</h1></Link>
 
                 <HamburgerMenu />
-                {logOutButton}
-                {editProfileLink}
 
-            </React.Fragment>
+            </nav>
         );
     }
 }
