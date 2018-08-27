@@ -1,13 +1,11 @@
 .logo-button {
     width: inherit;
     padding: 20px;
-    float: left;
     border-radius: 3%;
-    font-size: 30px;
+    font-size: 0.8em;
 }
 
 a.logo-button:link, a.logo-button:visited {
-    /* background-color: #8f4d3b; */
     color: #f5f1df;
     padding: 14px 25px;
     text-align: center; 
