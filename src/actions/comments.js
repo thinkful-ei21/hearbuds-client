@@ -42,7 +42,7 @@ export const setComment = (body) => (dispatch, getState) => {
     const eventId = getState().event.selectedEvent.event.id;
     let query = `
         mutation {
-            setComment(userId: "${authToken}", body: "${body}", eventId: "${eventId}")
+            setComment(body: "${body}", eventId: "${eventId}")
         }
     `
     fetch(`${API_BASE_URL}/graphql`, {
