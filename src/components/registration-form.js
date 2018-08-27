@@ -29,46 +29,50 @@ export class RegistrationForm extends React.Component {
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
-                <label htmlFor="username">Username</label>
-                <Field
-                    component={Input}
-                    type="text"
-                    name="username"
-                    validate={[required, nonEmpty, isTrimmed]}
-                />
-                <label htmlFor="email">Email</label>
-                <Field
-                    component={Input}
-                    type="text"
-                    name="email"
-                    validate={[required, nonEmpty, isTrimmed]}
-                />
-                <label htmlFor="zip">Zip Code</label>
-                <Field
-                    component={Input}
-                    type="zip"
-                    name="zip"
-                    validate={[required, zipLength, isTrimmed]}
-                />
-                <label htmlFor="password">Password</label>
-                <Field
-                    component={Input}
-                    type="password"
-                    name="password"
-                    validate={[required, passwordLength, isTrimmed]}
-                />
-                <label htmlFor="passwordConfirm">Confirm password</label>
-                <Field
-                    component={Input}
-                    type="password"
-                    name="passwordConfirm"
-                    validate={[required, nonEmpty, matchesPassword]}
-                />
-                <button
-                    type="submit"
-                    disabled={this.props.pristine || this.props.submitting}>
-                    Register
-                </button>
+                <div className="input-container">
+                    <label htmlFor="username">Username</label>
+                    <Field
+                        component={Input}
+                        type="text"
+                        name="username"
+                        validate={[required, nonEmpty, isTrimmed]}
+                        />
+                    <label htmlFor="email">Email</label>
+                    <Field
+                        component={Input}
+                        type="text"
+                        name="email"
+                        validate={[required, nonEmpty, isTrimmed]}
+                        />
+                    <label htmlFor="zip">Zip Code</label>
+                    <Field
+                        component={Input}
+                        type="zip"
+                        name="zip"
+                        validate={[required, zipLength, isTrimmed]}
+                        />
+                    <label htmlFor="password">Password</label>
+                    <Field
+                        component={Input}
+                        type="password"
+                        name="password"
+                        validate={[required, passwordLength, isTrimmed]}
+                        />
+                    <label htmlFor="passwordConfirm">Confirm password</label>
+                    <Field
+                        component={Input}
+                        type="password"
+                        name="passwordConfirm"
+                        validate={[required, nonEmpty, matchesPassword]}
+                        />
+                    <div className="button-container">
+                        <button
+                            type="submit"
+                            disabled={this.props.pristine || this.props.submitting}>
+                            Register
+                        </button>
+                    </div>
+                </div>
             </form>
         );
     }
