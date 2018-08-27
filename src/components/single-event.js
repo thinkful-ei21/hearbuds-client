@@ -3,7 +3,10 @@ import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import {getEvent} from '../actions/single-event';
 import Comments from './comments';
+// import {data} from '../utils/sampleResponse';
+
 import RSVPButton from './rsvp-button';
+import AddComment from './add-comment'; 
 
 
 class SingleEvent extends React.Component {
@@ -51,6 +54,7 @@ class SingleEvent extends React.Component {
 
                     <RSVPButton />
                     <Comments />
+                    <AddComment />
     
                 </React.Fragment>
             )
