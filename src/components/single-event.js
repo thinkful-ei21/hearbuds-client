@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import {getEvent} from '../actions/single-event';
 import Comments from './comments';
-import  {data} from '../utils/sampleResponse';
 import RSVPButton from './rsvp-button';
 
 
@@ -11,7 +10,7 @@ class SingleEvent extends React.Component {
     componentDidMount() {
         // action calls will go here
         const id  = this.props.match.params.id;
-        console.log(id);
+
         this.props.dispatch(getEvent(id));
     }
 
@@ -28,12 +27,10 @@ class SingleEvent extends React.Component {
         }
 
         if (event) {
-            //  <p>{this.props.event.venue}</p>
-            // <p>{this.props.event.address}, {this.props.event.city}</p>
-            // <img src={this.props.event.img} width="200px" alt="aubrey graham in a random city"></img> 
-            
-            const {name, dates, smallImage, bandLink, ticketLink} = this.props.event.event
-            let bandLinkXml = null;
+           // destructure event props
+            const {name, dates, smallImage, bandLink, ticketLink} = event.event
+            // if there is a band link, generate an anchor tag for it
+            let bandLinkXml;
             if (bandLink !== null) {
                 bandLinkXml = <a href={bandLink}>Band Website</a>
             }
@@ -45,19 +42,20 @@ class SingleEvent extends React.Component {
                 <React.Fragment>
                     
                     <h1>{name}</h1>
-                    <h3>{dates.start.localDate}</h3>
+                    <h2>{dates.start.localDate}</h2>
+                    <p>
+                        <a href={ticketLink}>Buy Tickets</a>
+                    </p>
                     <img src={smallImage} alt={name} width="200px"></img>
                     {bandLinkXml}
-                    <a href={ticketLink}>Buy Tickets</a>
 
-                    
                     <RSVPButton />
                     <Comments />
     
                 </React.Fragment>
             )
         }
-        return <div>something</div>
+        return null
 
     }
 }
