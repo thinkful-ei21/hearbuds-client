@@ -4,6 +4,7 @@ import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
 import {Link} from 'react-router-dom';
 import './nav.css';
+import HamburgerMenu from './hamburger-menu';
 
 export class Nav extends React.Component {
     logOut() {
@@ -27,12 +28,8 @@ export class Nav extends React.Component {
             <React.Fragment>
 
                 <Link to="/dashboard" className="logo-button"><h1>Hearbuds</h1></Link>
-                <div className="toggle">
 
-                    <div className="menu"></div>
-                    <div className="menu"></div>
-                    <div className="menu"></div>
-                </div>
+                <HamburgerMenu />
                 {logOutButton}
                 {editProfileLink}
 
