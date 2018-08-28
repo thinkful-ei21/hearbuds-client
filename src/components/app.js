@@ -7,6 +7,7 @@ import LandingPage from './landing-page';
 import Dashboard from './dashboard';
 import RegistrationPage from './registration-page';
 import EditPage from './edit-page';
+import LoginPage from './login-page';
 import {refreshAuthToken} from '../actions/auth';
 import SingleEvent from './single-event';
 
@@ -46,6 +47,7 @@ export class App extends React.Component {
                 <Nav />
                 <Route exact path="/" component={LandingPage} />
                 <Route exact path="/dashboard" component={Dashboard} />
+                <Route exact path="/login" component={LoginPage} />
                 <Route exact path="/register" component={RegistrationPage} />
                 <Route exact path="/edit" component={EditPage} />
                 <Route exact path="/dashboard/:id" component={SingleEvent} />

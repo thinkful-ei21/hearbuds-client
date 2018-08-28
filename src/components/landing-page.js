@@ -1,27 +1,28 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
-import './landing-page.css';
-
-import LoginForm from './login-form';
 
 export function LandingPage(props) {
-    // If we are logged in redirect straight to the user's dashboard
     if (props.loggedIn) {
         return <Redirect to="/dashboard" />;
     }
-
+    
     return (
-        <div className="home">
-            <h2>Welcome to Hearbuds</h2>
-            <LoginForm />
-            <Link className="register-link" to="/register">Register</Link>
+        <div className="landing-page">
+            <p>
+            We're revolutionizing the concert going experience!  
+            HearBuds helps you find cool shows and meet fun people
+             with similar musical taste. Find out what's happening 
+             in your area by entering your zip code below. 
+            </p>
+            <input className="zipcode-search-box" type="text" placeholder="zipcode"></input>
+            <button type="submit" className="zipcode-search-button">Search</button>
         </div>
     );
 }
 
 const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null
+    loggedIn: state.auth.currentUser != null
 });
 
-export default connect(mapStateToProps)(LandingPage);
+export default connect(mapStateToProps)(LandingPage)
