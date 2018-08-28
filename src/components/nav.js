@@ -21,7 +21,7 @@ export class Nav extends React.Component {
 
         if (this.props.loggedIn){
             logOutButton = (
-                <button onClick={() => this.logOut()}>Log out</button>
+                <a onClick={() => this.logOut()}>Log out</a>
             );
             editProfileButton = (
                 <Link to="/edit">Edit Profile</Link>
@@ -30,7 +30,7 @@ export class Nav extends React.Component {
         // display these links only when not logged in
         if (!this.props.loggedIn){
             loginButton = (
-            <Link to="/login">Sign in</Link>
+            <Link to="/">Sign in</Link>
             );
             registerButton = (
                 <Link to="/register">Register</Link>
@@ -41,7 +41,7 @@ export class Nav extends React.Component {
             <nav>
                 <Link to="/dashboard" className="logo-button"><h1>Hearbuds</h1></Link>
 
-                <Menu right width={'85%'} isOpen={ false } bodyClassName={ "bm-body"}>
+                <Menu right width={'100%'} isOpen={ false } noOverlay>
                         
 
                     {/* <a onClick={this.logOut()}>Logout</a> */}

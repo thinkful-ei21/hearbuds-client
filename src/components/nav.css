@@ -30,11 +30,14 @@ div.toggle {
 }
 
 .bm-menu {
-    background: rgba(0, 0, 0, 0.8);
-    
+    /* background: rgba(0, 0, 0, 0.8);
+    */
+    background: #48343a;
+    border-radius: 3px;
+    border: 1px solid black;
     position: relative;
-    left: 20%;
-    padding: 2.5em 1.5em 0;
+    left: 50%;
+    padding: 1.6em 1.6em 0;
     font-size: 1.15em;
 }
 
@@ -50,3 +53,20 @@ div.toggle {
     top: 20px;
 }
 
+.bm-item {
+    width: inherit;
+    /* display: flex; */
+    padding: 10px 10px;
+}
+
+.bm-overlay {
+    background: red;
+}
+
+@media only screen and (min-width: 400px) {
+    .bm-menu {
+        left: 70%;
+        padding: 1.6em 1.6em 0;
+        font-size: 1.15em;
+    }
+}
