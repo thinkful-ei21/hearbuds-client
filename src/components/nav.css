@@ -17,22 +17,12 @@ a.logo-button:hover, a.logo-button:active {
     background-color: #8f4d3b;
 }
 
-div.menu {
-    width: 35px;
-    height: 5px;
-    background-color: #f5f1df;
-    margin: 6px 0;
-}
-
-div.toggle {
-    float: right;
-    padding: 14px 20px;
-}
 
 .bm-menu {
     /* background: rgba(0, 0, 0, 0.8);
     */
-    background: #48343a;
+    background: #48343ad3;
+    /* background: #8f4d3bd0; */
     border-radius: 3px;
     border: 1px solid black;
     position: relative;
