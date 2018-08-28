@@ -24,7 +24,7 @@ a.logo-button:hover, a.logo-button:active {
     background: #48343ad3;
     /* background: #8f4d3bd0; */
     border-radius: 3px;
-    border: 1px solid black;
+    border: 1px solid #f1b879;
     position: relative;
     left: 50%;
     padding: 1.6em 1.6em 0;
