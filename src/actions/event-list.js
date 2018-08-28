@@ -21,7 +21,7 @@ export const getEventListError = err => ({
     err
 });
 
-export const getEventList = () => (dispatch, getState) => {
+export const getProtectedEventList = () => (dispatch, getState) => {
         dispatch(getEventListRequest());
         const authToken = getState().auth.authToken;
 
@@ -33,7 +33,7 @@ export const getEventList = () => (dispatch, getState) => {
                 'Authorization': `Bearer ${authToken}`
             },
             body: JSON.stringify({
-                query: `{getByZip(zip:60615) {id name smallImage dates {start {localDate}}   }  }`
+                query: `{getByZip {id name smallImage dates {start {localDate}}   }  }`
                 // query: "{getEvents {id name images {url}  dates {start {localDate}}}}"
             })
         })
@@ -48,3 +48,28 @@ export const getEventList = () => (dispatch, getState) => {
             dispatch(getEventListError(err))
         });
 };
+
+export const getUnprotectedEventList = (zipcode) => (dispatch) => {
+    dispatch(getEventListRequest());
+    console.log("getUnprotectedEventList fired")
+    // fetch(`${API_BASE_URL}/graphql`, {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //         'Accept': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //         query: `{getByZip(${zipcode}) {id name smallImage dates {start {localDate}}   }  }`
+    //     })
+    // })
+    // .then(res => normalizeResponseErrors(res))
+    // .then(res => res.json())
+    // .then(({data}) => {
+    //     console.log(data);
+    //     dispatch(getEventListSuccess(data))
+    // })
+    // .catch(err => {
+    //     console.log('an error occured')
+    //     dispatch(getEventListError(err))
+    // });
+}
