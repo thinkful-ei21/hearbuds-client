@@ -16,7 +16,7 @@ export class AddComment extends React.Component {
 				className="comment-form"
 				onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
 				>
-				<label htmlForm="body">Leave a comment</label>
+				<label htmlFor="body">Leave a comment</label>
 				<Field
 					component={Input}
 					type="text"

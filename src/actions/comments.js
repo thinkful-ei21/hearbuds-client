@@ -1,6 +1,5 @@
 import {normalizeResponseErrors} from '../actions/utils'
 import {API_BASE_URL} from  '../config';
-import {comments} from '../utils/sampleComments';
 import { loadAuthToken } from '../local-storage';
 
 export const GET_COMMENTS_REQUEST = 'GET_COMMENTS_REQUEST';
@@ -66,20 +65,21 @@ export const setComment = (body) => (dispatch, getState) => {
     })
 }
 
-export const getComments = (body) => (dispatch) => {
-    dispatch(getCommentsRequest());
-    fetch(`${API_BASE_URL}/graphql`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            // Authorization: `Bearer ${authToken}`
-        },
-        body: JSON.stringify({
 
-        })
-    })
-    dispatch(getCommentsSuccess(comments));
+// export const getComments = (body) => (dispatch) => {
+//     dispatch(getCommentsRequest());
+//     fetch(`${API_BASE_URL}/graphql`, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Accept': 'application/json',
+//             // Authorization: `Bearer ${authToken}`
+//         },
+//         body: JSON.stringify({
+
+//         })
+//     })
+//     dispatch(getCommentsSuccess());
     
     // fetch(`${API_BASE_URL}/graphql`, {
     //     method: 'POST',
@@ -99,4 +99,3 @@ export const getComments = (body) => (dispatch) => {
     //     dispatch(getCommentsSuccess(data))
     // })
     // .catch(err => dispatch(getCommentstError(err)));
-};
