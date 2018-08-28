@@ -11,12 +11,6 @@ export class LandingPage extends React.Component {
         }
     }
     
-    componentDidUpdate() {
-        this.setState({
-            redirect: null
-        })
-    }
-    
     seeEventList(e) {
         e.preventDefault();
         const zipcode = this.input.value;

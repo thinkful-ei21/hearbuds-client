@@ -5,6 +5,10 @@ import {getComments} from '../actions/comments'
 
 export class Comments extends React.Component {
 
+    componentDidMount() {
+        this.props.dispatch(getComments())
+    }
+
     render() {
         // console.log("singleEvent state", this.props.comments)
         const {loading, error, comments} = this.props;

@@ -12,15 +12,15 @@ import {
 } from '../actions/event-list'
 
 import {
-    GET_COMMENTS_REQUEST,
-    GET_COMMENTS_SUCCESS,
-    GET_COMMENTS_ERROR
+    SET_COMMENT_REQUEST,
+    SET_COMMENT_SUCCESS,
+    SET_COMMENT_ERROR,
+    GET_COMMENTS
 } from '../actions/comments'
 
 const initialState = {
     eventList: null,
     selectedEvent: null,
-    comments: null,
     loading: false,
     error: null
     }
@@ -69,25 +69,29 @@ export default function reducer(state = initialState, action) {
             loading: false,
             error: "an error occured"
         }
-    } else if (action.type === GET_COMMENTS_REQUEST) {
+    } else if (action.type === SET_COMMENT_REQUEST) {
         return {
             ...state,
-            comments: null,
             loading: true,
             error: null
         }
-    } else if (action.type === GET_COMMENTS_SUCCESS) {
+    } else if (action.type === SET_COMMENT_SUCCESS) {
+        console.log(action.comments)
         return {
             ...state,
             loading: false,
             comments: action.comments,
             error: null
         }
-    } else if (action.type === GET_COMMENTS_ERROR) {
+    } else if (action.type === SET_COMMENT_ERROR) {
         return {
             ...state,
             loading: false,
             error: "an error occured"
+        }
+    } else if (action.type === GET_COMMENTS) {
+        return {
+            ...state
         }
     }
     return state;

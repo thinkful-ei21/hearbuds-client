@@ -1,23 +1,23 @@
 import {normalizeResponseErrors} from '../actions/utils'
 import {API_BASE_URL} from  '../config';
 import { loadAuthToken } from '../local-storage';
+import {getEvent} from '../actions/single-event';
 
-export const GET_COMMENTS_REQUEST = 'GET_COMMENTS_REQUEST';
-export const getCommentsRequest = () => ({
-    type: GET_COMMENTS_REQUEST
+// export const GET_COMMENTS_REQUEST = 'GET_COMMENTS_REQUEST';
+// export const getCommentsRequest = () => ({
+//     type: GET_COMMENTS_REQUEST
+// });
+
+export const GET_COMMENTS = 'GET_COMMENTS';
+export const getComments = () => ({
+    type: GET_COMMENTS
 });
 
-export const GET_COMMENTS_SUCCESS = 'GET_COMMENTS_SUCCESS';
-export const getCommentsSuccess = (comments) => ({
-    type: GET_COMMENTS_SUCCESS,
-    comments
-});
-
-export const GET_COMMENTS_ERROR = 'GET_COMMENTS_ERROR';
-export const getCommentsError = err => ({
-    type: GET_COMMENTS_ERROR,
-    err
-});
+// export const GET_COMMENTS_ERROR = 'GET_COMMENTS_ERROR';
+// export const getCommentsError = err => ({
+//     type: GET_COMMENTS_ERROR,
+//     err
+// });
 
 export const SET_COMMENT_SUCCESS = 'SET_COMMENT_SUCCESS';
 export const setCommentSuccess = (comment) => ({
@@ -57,7 +57,10 @@ export const setComment = (body) => (dispatch, getState) => {
     .then(res => res.json())
     .then(({data}) => {
         console.log(data);
-        dispatch(setCommentSuccess(data))
+        dispatch(setCommentSuccess(data));
+    })
+    .then(() => {
+        dispatch(getEvent(eventId));
     })
     .catch(err => {
         console.log('an error occurred')
