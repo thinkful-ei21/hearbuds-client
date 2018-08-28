@@ -28,3 +28,24 @@ div.toggle {
     float: right;
     padding: 14px 20px;
 }
+
+.bm-menu {
+    background: blue;
+    position: relative;
+    left: 20%;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+}
+
+.bm-burger-bars {
+    background: #f5f1df;
+}
+
+.bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    right: 20px;
+    top: 20px;
+}
+

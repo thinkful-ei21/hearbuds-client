@@ -4,6 +4,7 @@ import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
 import {Link} from 'react-router-dom';
 import './nav.css';
+import { stack as Menu } from 'react-burger-menu';
 import HamburgerMenu from './hamburger-menu';
 
 export class Nav extends React.Component {
@@ -13,11 +14,42 @@ export class Nav extends React.Component {
     }
 
     render() {
+        let logOutButton;
+        let editProfileButton;
+        let loginButton;
+        let registerButton;
+
+        if (this.props.loggedIn){
+            logOutButton = (
+                <button onClick={() => this.logOut()}>Log out</button>
+            );
+            editProfileButton = (
+                <Link to="/edit">Edit Profile</Link>
+            );
+        }
+        // display these links only when not logged in
+        if (!this.props.loggedIn){
+            loginButton = (
+            <Link to="/login">Sign in</Link>
+            );
+            registerButton = (
+                <Link to="/register">Register</Link>
+            )
+
+        }
         return (
             <nav>
                 <Link to="/dashboard" className="logo-button"><h1>Hearbuds</h1></Link>
 
-                <HamburgerMenu />
+                <Menu right width={'85%'} isOpen={ false } bodyClassName={ "bm-body"}>
+                        
+
+                    {/* <a onClick={this.logOut()}>Logout</a> */}
+                    {loginButton}
+                    {registerButton}
+                    {editProfileButton}
+                    {logOutButton}
+                </Menu>
             </nav>
         );
     }
