@@ -1,7 +1,7 @@
 ul {
 	list-style-type: none;
 	position: relative;
-	border: 1px solid white;
+	padding-left: 0;
 }
 
 li {
@@ -13,24 +13,38 @@ li {
 
 .comments-container {
 	max-width: 80%;
+	margin: auto;
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
 .comment-box {
-	border: 1px solid white;
-	padding: 15px 15px;
+	/*padding: 15px 15px;*/
 }
 
 .comment-header {
 	padding: 8px 8px;
-	border: 1px solid white;
+	background-color: #eeeeee;
+	color: #0e0e0e;
+	border-bottom: 1px solid black;
 }
 
 .comment-body {
-	padding: 8px 8px;
-	border: 1px solid white;
+	padding: 15px 8px;
+	background-color: #eeeeee;
+	color: #0f0f0f;
 }
 
 #comment-author {
+	color: #48343a;
+	font-weight: bolder;
+	font-size: 1.2rem;
+}
 
+#comment-time {
+	color: #7a5d65;
+	font-size: 0.8rem;
+}
+
+#comment-emojis {
+	float: right;
 }

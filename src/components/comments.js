@@ -21,7 +21,7 @@ export class Comments extends React.Component {
 
         if (comments) {
               const displayComments = comments.map((user, index) => {
-                    return <Comment key={index} user={user.user.username} body={user.body} />
+                    return <Comment key={index} time={user.time} user={user.user.username} body={user.body} />
                 })
             return (
                 <div class="comments-container">
