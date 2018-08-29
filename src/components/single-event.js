@@ -67,8 +67,7 @@ class SingleEvent extends React.Component {
 const mapStateToProps = state => {
     return {
         event: state.event.selectedEvent,
-        username: state.auth.currentUser.username,
-        protectedData: state.protectedData.data
+        username: state.auth.currentUser.username
     };
 };
 
