@@ -36,6 +36,7 @@ export const getEvent = (eventId) => (dispatch, getState) => {
             // query: `{getById(id: "${eventId}") {id name ticketLink bandLink smallImage dates {start {localDate}}   }  }`
             query: `{getById(id: "${eventId}") {id name ticketLink bandLink smallImage comments { body user { username id } } dates { start {localDate} } } }`
 
+
         })
     })
     // makes the response errors more readable

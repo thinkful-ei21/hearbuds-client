@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
 import {Link} from 'react-router-dom';
+import './nav.css';
+import { stack as Menu } from 'react-burger-menu';
 
 export class Nav extends React.Component {
     logOut() {
@@ -11,23 +13,43 @@ export class Nav extends React.Component {
     }
 
     render() {
-        // Only render the log out button if we are logged in
         let logOutButton;
-        let editProfileLink;
-        if (this.props.loggedIn) {
+        let editProfileButton;
+        let loginButton;
+        let registerButton;
+
+        if (this.props.loggedIn){
             logOutButton = (
-                <button onClick={() => this.logOut()}>Log out</button>
+                <a onClick={() => this.logOut()}>Log out</a>
             );
-            editProfileLink = (
+            editProfileButton = (
                 <Link to="/edit">Edit Profile</Link>
+            );
+        }
+        // display these links only when not logged in
+        if (!this.props.loggedIn){
+            loginButton = (
+            <Link to="/">Sign in</Link>
+            );
+            registerButton = (
+                <Link to="/register">Register</Link>
             )
+
         }
         return (
-            <header role="banner" className="header-bar">
-                <Link to="/dashboard"><h1>Hearbuds</h1></Link>
-                {logOutButton}
-                {editProfileLink}
-            </header>
+            <nav>
+                <Link to="/dashboard" className="logo-button"><h1>Hearbuds</h1></Link>
+
+                <Menu right width={'100%'} isOpen={ false } noOverlay>
+                        
+
+                    {/* <a onClick={this.logOut()}>Logout</a> */}
+                    {loginButton}
+                    {registerButton}
+                    {editProfileButton}
+                    {logOutButton}
+                </Menu>
+            </nav>
         );
     }
 }

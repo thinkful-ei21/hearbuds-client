@@ -9,6 +9,7 @@
     "dotenv": "^6.0.0",
     "jwt-decode": "^2.2.0",
     "react": "^16.2.0",
+    "react-burger-menu": "^2.5.2",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.4",
     "react-router-dom": "^4.1.1",
