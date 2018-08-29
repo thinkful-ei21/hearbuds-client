@@ -9,9 +9,9 @@ export class Dashboard extends React.Component {
 
     render() {
         return (
-            <div className="dashboard">
-                <h2 id="dashboard-title">Welcome {this.props.username}!</h2>
-            <EventList />
+            <div>
+                <h2 className="dashboard-title">Welcome {this.props.username}!</h2>
+                <EventList />
             
             </div>
         );
