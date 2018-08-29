@@ -12,7 +12,6 @@ export class Dashboard extends React.Component {
             <div>
                 <h2 className="dashboard-title">Welcome {this.props.username}!</h2>
                 <EventList />
-            
             </div>
         );
     }
