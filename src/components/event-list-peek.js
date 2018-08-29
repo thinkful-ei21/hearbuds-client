@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 export class EventListPeek extends React.Component {
 
     render() {
-        const {loading, error, eventList} = this.props;
-        
+        const {loading, error, eventListPeek} = this.props;
+        console.log(eventListPeek);
         if (loading) {
             return <div>Loading event list...</div>
         }
@@ -16,8 +16,8 @@ export class EventListPeek extends React.Component {
             return <div>{this.props.error}</div>
         }
 
-        if (eventList) {
-            return (eventList.map((event, index) => {
+        if (eventListPeek) {
+            return (eventListPeek.map((event, index) => {
                
                return <ul key={index.toString() + 'ul'}>
                     {this.state.redirect}
@@ -38,7 +38,7 @@ export class EventListPeek extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        eventList: state.event.eventList,
+        eventListPeek: state.event.eventListPeek,
         loading: state.event.loading,
         error: state.event.error
     };

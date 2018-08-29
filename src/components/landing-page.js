@@ -14,6 +14,7 @@ export class LandingPage extends React.Component {
     seeEventList(e) {
         e.preventDefault();
         const zipcode = this.input.value;
+        console.log(zipcode)
         this.props.dispatch(getUnprotectedEventList(zipcode));
         return this.setState({
             redirect: <Redirect to="/peek" />

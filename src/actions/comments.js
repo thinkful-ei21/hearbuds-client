@@ -3,22 +3,6 @@ import {API_BASE_URL} from  '../config';
 import { loadAuthToken } from '../local-storage';
 import {getEvent} from '../actions/single-event';
 
-// export const GET_COMMENTS_REQUEST = 'GET_COMMENTS_REQUEST';
-// export const getCommentsRequest = () => ({
-//     type: GET_COMMENTS_REQUEST
-// });
-
-export const GET_COMMENTS = 'GET_COMMENTS';
-export const getComments = () => ({
-    type: GET_COMMENTS
-});
-
-// export const GET_COMMENTS_ERROR = 'GET_COMMENTS_ERROR';
-// export const getCommentsError = err => ({
-//     type: GET_COMMENTS_ERROR,
-//     err
-// });
-
 export const SET_COMMENT_SUCCESS = 'SET_COMMENT_SUCCESS';
 export const setCommentSuccess = (comment) => ({
     type: SET_COMMENT_REQUEST,
@@ -67,38 +51,3 @@ export const setComment = (body) => (dispatch, getState) => {
         dispatch(setCommentError(err))
     })
 }
-
-
-// export const getComments = (body) => (dispatch) => {
-//     dispatch(getCommentsRequest());
-//     fetch(`${API_BASE_URL}/graphql`, {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Accept': 'application/json',
-//             // Authorization: `Bearer ${authToken}`
-//         },
-//         body: JSON.stringify({
-
-//         })
-//     })
-//     dispatch(getCommentsSuccess());
-    
-    // fetch(`${API_BASE_URL}/graphql`, {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'Accept': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //         // build query to get comments from the server db for specific user
-    //         // query: "{getEvents {id name images {url}  dates {start {localDate}}}}"
-    //     })
-    // })
-    // .then(res => normalizeResponseErrors(res))
-    // .then(res => res.json())
-    // .then(({data}) => {
-    //     console.log(data);
-    //     dispatch(getCommentsSuccess(data))
-    // })
-    // .catch(err => dispatch(getCommentstError(err)));

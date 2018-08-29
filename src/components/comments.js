@@ -1,13 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
-import {getComments} from '../actions/comments'
+
 
 export class Comments extends React.Component {
-
-    componentDidMount() {
-        this.props.dispatch(getComments())
-    }
 
     render() {
         // console.log("singleEvent state", this.props.comments)

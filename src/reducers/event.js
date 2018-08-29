@@ -4,27 +4,27 @@ import {
     GET_EVENT_ERROR,
 } from '../actions/single-event'
 
-    
 import {
     GET_EVENT_LIST_REQUEST,
     GET_EVENT_LIST_SUCCESS,
-    GET_EVENT_LIST_ERROR
+    GET_EVENT_LIST_ERROR,
+    GET_UNPROTECTED_EVENT_LIST_REQUEST,
+    GET_UNPROTECTED_EVENT_LIST_ERROR
 } from '../actions/event-list'
 
 import {
     SET_COMMENT_REQUEST,
     SET_COMMENT_SUCCESS,
-    SET_COMMENT_ERROR,
-    GET_COMMENTS
+    SET_COMMENT_ERROR
 } from '../actions/comments'
 
 const initialState = {
     eventList: null,
+    eventListPeek: null,
     selectedEvent: null,
     loading: false,
     error: null
     }
-
 
 export default function reducer(state = initialState, action) {
     if (action.type === GET_EVENT_REQUEST) {
@@ -80,7 +80,6 @@ export default function reducer(state = initialState, action) {
         return {
             ...state,
             loading: false,
-            comments: action.comments,
             error: null
         }
     } else if (action.type === SET_COMMENT_ERROR) {
@@ -89,9 +88,25 @@ export default function reducer(state = initialState, action) {
             loading: false,
             error: "an error occured"
         }
-    } else if (action.type === GET_COMMENTS) {
+    } else if (action.type === GET_UNPROTECTED_EVENT_LIST_REQUEST) {
         return {
-            ...state
+            ...state, 
+            loading: true,
+            error: null
+        }
+    }  else if (action.type === GET_UNPROTECTED_EVENT_LIST_REQUEST) {
+        return {
+            ...state,
+            loading: false,
+            eventListPeek: action.eventList,
+            error: null
+        }
+    } else if (action.type === GET_UNPROTECTED_EVENT_LIST_ERROR) {
+        console.log(action.error);
+        return {
+            ...state,
+            loading: false,
+            error: "an error occured"
         }
     }
     return state;
