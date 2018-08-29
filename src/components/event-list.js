@@ -20,7 +20,6 @@ export class EventList extends React.Component {
 
     goToEvent(e) {
         e.preventDefault();
-        console.log('clicked');
         let eventId = e.currentTarget.value;
         return this.setState({
             redirect: <Redirect to={'/dashboard/'+eventId} />
@@ -29,7 +28,8 @@ export class EventList extends React.Component {
 
     render() {
         const {loading, error, eventList} = this.props;
-        
+        let events;
+
         if (loading) {
             return <div>Loading event list...</div>
         }
@@ -39,7 +39,7 @@ export class EventList extends React.Component {
         }
 
         if (eventList) {
-            return (eventList.map((event, index) => {
+            events = eventList.map((event, index) => {
                
                return <ul key={index.toString() + 'ul'}>
                     {this.state.redirect}
@@ -51,12 +51,18 @@ export class EventList extends React.Component {
                     <button type='submit' value={event.id} onClick={(e) => this.goToEvent(e)}>See more info</button>
                 </ul>
 
-            }))
+            })
 
         }
-        return null
-        }
+        return (
+            <div>
+                {events}
+                <button>Prev Page</button>
+                <button>Next Page</button>
+            </div>
+        );
     }
+}
 
 const mapStateToProps = state => {
     return {
