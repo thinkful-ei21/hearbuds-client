@@ -2,12 +2,16 @@ import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
 import Input from './input';
 import {setComment} from '../actions/comments';
+import {reset} from 'redux-form';
+import {getEvent} from '../actions/single-event';
 
 export class AddComment extends React.Component {
+
 	onSubmit(values) {
 		const {body} = values;
-		console.log(body);
-		return this.props.dispatch(setComment(body));
+		// console.log(body);
+		this.props.dispatch(setComment(body));
+		this.props.dispatch(reset('comment'));
 	}
 
 	render() {
@@ -16,7 +20,7 @@ export class AddComment extends React.Component {
 				className="comment-form"
 				onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
 				>
-				<label htmlForm="body">Leave a comment</label>
+				<label htmlFor="body">Leave a comment</label>
 				<Field
 					component={Input}
 					type="text"
