@@ -29,7 +29,7 @@ export class Nav extends React.Component {
         // display these links only when not logged in
         if (!this.props.loggedIn){
             loginButton = (
-            <Link to="/">Sign in</Link>
+            <Link to="/login">Sign in</Link>
             );
             registerButton = (
                 <Link to="/register">Register</Link>
