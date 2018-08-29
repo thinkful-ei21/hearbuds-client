@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
-import {getProtectedEventList, getNextPage} from '../actions/event-list'
+import {getProtectedEventList, getNextPage, getPrevPage} from '../actions/event-list'
 import {Redirect} from 'react-router-dom';
 
 export class EventList extends React.Component {
@@ -18,6 +18,10 @@ export class EventList extends React.Component {
         this.props.dispatch(getProtectedEventList(this.props.page));
     }
 
+    prevPageClick(e) {
+        this.props.dispatch(getPrevPage());
+        this.props.dispatch(getProtectedEventList(this.props.page));
+    }
     nextPageClick(e) {
         this.props.dispatch(getNextPage());
         this.props.dispatch(getProtectedEventList(this.props.page))
@@ -33,7 +37,7 @@ export class EventList extends React.Component {
     }
 
     render() {
-        const {loading, error, eventList, } = this.props;
+        const {loading, error, eventList, page} = this.props;
         let events;
 
         if (loading) {
@@ -42,6 +46,10 @@ export class EventList extends React.Component {
 
         if (error) {
             return <div>{this.props.error}</div>
+        }
+
+        if (page > 1) {
+            console.log('what the ....')
         }
 
         if (eventList) {
@@ -63,7 +71,7 @@ export class EventList extends React.Component {
         return (
             <div>
                 {events}
-                <button>Prev Page</button>
+                <button onClick={() => this.prevPageClick()}>Prev Page</button>
                 <button onClick={() => this.nextPageClick()}>Next Page</button>
             </div>
         );

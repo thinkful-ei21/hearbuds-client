@@ -10,7 +10,8 @@ import {
     GET_EVENT_LIST_ERROR,
     GET_UNPROTECTED_EVENT_LIST_REQUEST,
     GET_UNPROTECTED_EVENT_LIST_ERROR,
-    GET_NEXT_PAGE
+    GET_NEXT_PAGE,
+    GET_PREV_PAGE
 } from '../actions/event-list'
 
 import {
@@ -75,6 +76,11 @@ export default function reducer(state = initialState, action) {
         return {
             ...state,
             page: state.page + 1
+        }
+    } else if (action.type === GET_PREV_PAGE) {
+        return {
+            ...state,
+            page: state.page - 1
         }
     } else if (action.type === SET_COMMENT_REQUEST) {
         return {

@@ -24,7 +24,12 @@ export const getEventListError = err => ({
 export const GET_NEXT_PAGE = 'GET_NEXT_PAGE';
 export const getNextPage = () => ({
     type: GET_NEXT_PAGE
-})
+});
+
+export const GET_PREV_PAGE = 'GET_PREV_PAGE';
+export const getPrevPage = () => ({
+    type: GET_PREV_PAGE
+});
 
 export const GET_UNPROTECTED_EVENT_LIST_REQUEST = 'GET_UNPROTECTED_EVENT_LIST_REQUEST';
 export const getUnprotectedEventListRequest = () => ({
@@ -43,11 +48,11 @@ export const getUnprotectedEventListError = err => ({
     err
 });
 
-export const getProtectedEventList = (pageNumber) => (dispatch, getState) => {
+export const getProtectedEventList = () => (dispatch, getState) => {
         dispatch(getEventListRequest());
         const authToken = getState().auth.authToken;
+        const pageNumber = getState().event.page;
 
-        console.log(pageNumber);
     
         fetch(`${API_BASE_URL}/graphql`, {
             method: 'POST',
