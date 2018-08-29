@@ -1,35 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import requiresLogin from './requires-login';
-import {getProtectedEventList} from '../actions/event-list'
-import {Redirect} from 'react-router-dom';
 
-export class EventList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            redirect: null,
-        }
-    }
-    componentDidMount() {
-        this.setState({
-            redirect: null
-        })
-        this.props.dispatch(getProtectedEventList());
-    }
+// import {Redirect} from 'react-router-dom';
 
-    goToEvent(e) {
-        e.preventDefault();
-        console.log('clicked');
-        let eventId = e.currentTarget.value;
-        return this.setState({
-            redirect: <Redirect to={'/dashboard/'+eventId} />
-        })
-    }
+export class EventListPeek extends React.Component {
 
     render() {
-        const {loading, error, eventList} = this.props;
-        
+        const {loading, error, eventListPeek} = this.props;
+        console.log(eventListPeek);
         if (loading) {
             return <div>Loading event list...</div>
         }
@@ -38,8 +16,8 @@ export class EventList extends React.Component {
             return <div>{this.props.error}</div>
         }
 
-        if (eventList) {
-            return (eventList.map((event, index) => {
+        if (eventListPeek) {
+            return (eventListPeek.map((event, index) => {
                
                return <ul key={index.toString() + 'ul'}>
                     {this.state.redirect}
@@ -60,11 +38,11 @@ export class EventList extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        eventList: state.event.eventList,
+        eventListPeek: state.event.eventListPeek,
         loading: state.event.loading,
         error: state.event.error
     };
 }
 
 
-export default requiresLogin()(connect(mapStateToProps)(EventList));
+export default connect(mapStateToProps)(EventListPeek);

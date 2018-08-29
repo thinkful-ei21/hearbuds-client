@@ -1,19 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
-import {getComments} from '../actions/comments'
+
 
 export class Comments extends React.Component {
 
-    componentDidMount() {
-        // get id from the url
-        // const id = this.props.match.params.id;
-        this.props.dispatch(getComments());
-    }
-
     render() {
-
+        // console.log("singleEvent state", this.props.comments)
         const {loading, error, comments} = this.props;
+        
 
         if (loading) {
            return <h1>loading comments...</h1>
@@ -24,9 +19,9 @@ export class Comments extends React.Component {
         }
 
         if (comments) {
-              const displayComments = Object.keys(comments).map((user, index) => {
-                    console.log(user, comments[user])
-                    return <li key={index}>{user}: {comments[user]}</li>
+              const displayComments = comments.map((user, index) => {
+                    // console.log("user", user, "comment", comments[user])
+                    return <li key={index}>{user.user.username}: {user.body}</li>
                 })
             return (
                 <ul>
@@ -43,7 +38,7 @@ export class Comments extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        comments: state.event.comments,
+        comments: state.event.selectedEvent.event.comments,
         loading: state.event.loading,
         error: state.event.error
     };
