@@ -9,7 +9,8 @@ import {
     GET_EVENT_LIST_SUCCESS,
     GET_EVENT_LIST_ERROR,
     GET_UNPROTECTED_EVENT_LIST_REQUEST,
-    GET_UNPROTECTED_EVENT_LIST_ERROR
+    GET_UNPROTECTED_EVENT_LIST_ERROR,
+    GET_NEXT_PAGE
 } from '../actions/event-list'
 
 import {
@@ -20,6 +21,7 @@ import {
 
 const initialState = {
     eventList: null,
+    page: 1,
     eventListPeek: null,
     selectedEvent: null,
     loading: false,
@@ -68,6 +70,11 @@ export default function reducer(state = initialState, action) {
             ...state,
             loading: false,
             error: "an error occured"
+        }
+    } else if (action.type === GET_NEXT_PAGE) {
+        return {
+            ...state,
+            page: state.page + 1
         }
     } else if (action.type === SET_COMMENT_REQUEST) {
         return {
