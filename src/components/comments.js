@@ -24,7 +24,7 @@ export class Comments extends React.Component {
                     return <Comment key={index} time={user.time} user={user.user.username} body={user.body} />
                 })
             return (
-                <div class="comments-container">
+                <div className="comments-container">
                     <ul>
                         {displayComments}
                     </ul>
