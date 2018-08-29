@@ -1,0 +1,36 @@
+ul {
+	list-style-type: none;
+	position: relative;
+	border: 1px solid white;
+}
+
+li {
+	margin-bottom: 15px;
+	display: block;
+	position: relative;
+	color: white;
+}
+
+.comments-container {
+	max-width: 80%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.comment-box {
+	border: 1px solid white;
+	padding: 15px 15px;
+}
+
+.comment-header {
+	padding: 8px 8px;
+	border: 1px solid white;
+}
+
+.comment-body {
+	padding: 8px 8px;
+	border: 1px solid white;
+}
+
+#comment-author {
+
+}
