@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
-
+import Comment from './single-comment';
+require('./comments.css');
 
 export class Comments extends React.Component {
 
@@ -20,13 +21,14 @@ export class Comments extends React.Component {
 
         if (comments) {
               const displayComments = comments.map((user, index) => {
-                    // console.log("user", user, "comment", comments[user])
-                    return <li key={index}>{user.user.username}: {user.body}</li>
+                    return <Comment key={index} time={user.time} user={user.user.username} body={user.body} />
                 })
             return (
-                <ul>
-                    {displayComments}
-                </ul>
+                <div className="comments-container">
+                    <ul>
+                        {displayComments}
+                    </ul>
+                </div>
             )
         
         }
