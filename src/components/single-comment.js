@@ -1,11 +1,11 @@
 import React from 'react';
 
 export default function Comment(props) {
-	return <li class="comment-box">
-			<div class="comment-header">
+	return <li className="comment-box">
+			<div className="comment-header">
 				<span id="comment-author">{props.user}</span> - <span id="comment-time">{props.time}</span><span id="comment-emojis">❤️</span>
 			</div>
-			<div class="comment-body"> 
+			<div className="comment-body"> 
 				{props.body}
 			</div>
 		</li>
