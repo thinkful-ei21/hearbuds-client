@@ -47,12 +47,12 @@ export class App extends React.Component {
             <div className="app">
                 <Nav />
                 <Route exact path="/" component={LandingPage} />
-                <Route exact path="/:zipcode" component={Dashboard} />
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/login" component={LoginPage} />
                 <Route exact path="/register" component={RegistrationPage} />
                 <Route exact path="/edit" component={EditPage} />
                 <Route exact path="/dashboard/:id" component={SingleEvent} />
+                <Route exact path="/peek/:zipcode" component={Dashboard} />
             </div>
         );
     }

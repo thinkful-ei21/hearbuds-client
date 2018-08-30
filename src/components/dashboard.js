@@ -31,5 +31,5 @@ const mapStateToProps = state => {
     };
 };
 
-export default withRouter(connect(mapStateToProps)(Dashboard));
+export default connect(mapStateToProps)(Dashboard);
 // export default requiresLogin()(connect(mapStateToProps)(Dashboard));

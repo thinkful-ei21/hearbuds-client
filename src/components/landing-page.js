@@ -29,7 +29,7 @@ export class LandingPage extends React.Component {
         }
         
         if (this.state.redirect) {
-            return <Redirect to={"/"+this.state.zipcode} />
+            return <Redirect to={"/peek/"+this.state.zipcode} />
         }
 
         return (
@@ -53,4 +53,4 @@ const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser != null
 });
 
-export default withRouter(connect(mapStateToProps)(LandingPage));
+export default connect(mapStateToProps)(LandingPage);
