@@ -49,13 +49,14 @@ export class EventList extends React.Component {
             return <div>{this.props.error}</div>
         }
 
-        if (page > 1) {
-            prevPage = <button onClick={() => this.prevPageClick()}>Prev Page</button>
-        }
-
         if (eventList) {
             events = eventList.map((event, index) => {
-               
+                // only display the previous page button
+                // if page is not the first page
+                if (page > 1) {
+                    prevPage = <button onClick={() => this.prevPageClick()}>Prev Page</button>
+                }
+
                return <ul key={index.toString() + 'ul'}>
                     {this.state.redirect}
                     <li className='event-name' key={index.toString()+'name'}>{event.name}</li>
