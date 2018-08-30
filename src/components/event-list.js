@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
-import {getEventList} from '../actions/event-list'
-import {Redirect, withRouter} from 'react-router-dom';
+import {getEventList, getNextPage, getPrevPage} from '../actions/event-list'
+import {Redirect} from 'react-router-dom';
 
 export class EventList extends React.Component {
     constructor(props) {
@@ -25,9 +25,18 @@ export class EventList extends React.Component {
         }
     }
 
+    prevPageClick(e) {
+        this.props.dispatch(getPrevPage());
+        this.props.dispatch(getEventList());
+    }
+    nextPageClick(e) {
+        this.props.dispatch(getNextPage());
+        this.props.dispatch(getEventList())
+    }
+
+
     goToEvent(e) {
         e.preventDefault();
-        console.log('clicked');
         let eventId = e.currentTarget.value;
         if (this.props.loggedIn) {
             return this.setState({
@@ -45,8 +54,10 @@ export class EventList extends React.Component {
     }
 
     render() {
-        const {loading, error, eventList} = this.props;
-        
+        const {loading, error, eventList, page} = this.props;
+        let events;
+        let prevPage;
+
         if (loading) {
             return <div>Loading event list...</div>
         }
@@ -60,8 +71,13 @@ export class EventList extends React.Component {
         }
 
         if (eventList) {
-            return (eventList.map((event, index) => {
-               
+            events = eventList.map((event, index) => {
+                // only display the previous page button
+                // if page is not the first page
+                if (page > 1) {
+                    prevPage = <button onClick={() => this.prevPageClick()}>Prev Page</button>
+                }
+
                return <ul key={index.toString() + 'ul'}>
                     {this.state.message}
                     <li className='event-name' key={index.toString()+'name'}>{event.name}</li>
@@ -72,21 +88,30 @@ export class EventList extends React.Component {
                     <button type='submit' value={event.id} onClick={(e) => this.goToEvent(e)}>See more info</button>
                 </ul>
 
-            }))
+            })
 
         }
-        return null
-        }
+        return (
+            <div>
+                {events}
+                {prevPage}
+                <h1>Page: {page}</h1>
+                {/* <button onClick={() => this.prevPageClick()}>Prev Page</button> */}
+                <button onClick={() => this.nextPageClick()}>Next Page</button>
+            </div>
+        );
     }
+}
 
 const mapStateToProps = state => {
     return {
         loggedIn: state.auth.currentUser != null,
         eventList: state.event.eventList,
+        page: state.event.page,
         loading: state.event.loading,
         error: state.event.error
     };
 }
 
-export default withRouter(connect(mapStateToProps)(EventList));
+export default connect(mapStateToProps)(EventList);
 // export default requiresLogin()(connect(mapStateToProps)(EventList));

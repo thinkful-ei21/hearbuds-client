@@ -1,5 +1,7 @@
 import React from 'react';
 
+require('./comments.css');
+
 export default function Comment(props) {
 	return <li className="comment-box">
 			<div className="comment-header">

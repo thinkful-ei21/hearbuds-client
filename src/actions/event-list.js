@@ -19,6 +19,16 @@ export const getEventListError = err => ({
     err
 });
 
+export const GET_NEXT_PAGE = 'GET_NEXT_PAGE';
+export const getNextPage = () => ({
+    type: GET_NEXT_PAGE
+});
+
+export const GET_PREV_PAGE = 'GET_PREV_PAGE';
+export const getPrevPage = () => ({
+    type: GET_PREV_PAGE
+});
+
 export const getEventList = (zipcode) => (dispatch, getState) => {
         dispatch(getEventListRequest());
         console.log(zipcode, "getEventListFired")
@@ -29,6 +39,7 @@ export const getEventList = (zipcode) => (dispatch, getState) => {
     } else {
         query = `{getByZip {id name smallImage dates {start {localDate}}   }  }`
     }
+        const pageNumber = getState().event.page;
         fetch(`${API_BASE_URL}/graphql`, {
             method: 'POST',
             headers: {

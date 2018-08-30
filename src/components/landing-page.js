@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Redirect, withRouter} from 'react-router-dom';
-
+import {Link, Redirect} from 'react-router-dom';
+require('./landing-page.css');
 
 export class LandingPage extends React.Component {
     constructor(props){
@@ -32,16 +32,18 @@ export class LandingPage extends React.Component {
             return <Redirect to={"/peek/"+this.state.zipcode} />
         }
 
+        let imgSrc = `https://s3.amazonaws.com/fasfawefaf/yvette-de-wit-118721-unsplash.jpg`;
+
         return (
             <div className="landing-page">
+                <img src={imgSrc} alt="background" className="background-image" />
+                {this.state.redirect}
+                <h1 className="landing-title">HearBuds</h1>
                 <p className="landing-page-text">
-                    We're revolutionizing the concert going experience!  
-                    HearBuds helps you find cool shows and meet fun people
-                    with similar musical taste. Find out what's happening 
-                    in your area by entering your zip code below. 
+                    We're revolutionizing the concert going experience. Find out who's going or someone to go with. 
                 </p>
                 <input ref={input => this.input = input} className="zipcode-search-box" type="text" placeholder="zipcode"></input>
-                <button type="submit" className="zipcode-search-button" onClick={(e) => this.seeEventList(e)}>Search</button>
+                <button type="submit" className="zipcode-search-button" onClick={(e) => this.seeEventList(e)}>Go</button>
             </div>
         );
     }

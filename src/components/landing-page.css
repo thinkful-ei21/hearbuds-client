@@ -1,0 +1,82 @@
+.landing-page {
+	position: relative;
+	width: 100%;
+	text-align: center;
+}
+
+.background-image {
+	min-width: 100%;
+	width: 100%;
+	min-height: 600px;
+	max-height: 800px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+/*need to sort out staying tall or covering for the background image */
+
+.landing-title {
+	padding-top: 35px;
+	font-size: 3.4rem;
+	color: rgba(0,0,0,0.7);
+	filter: drop-shadow(0 0 0.2px #444444);
+}
+
+.landing-page-text {
+	font-size: 2rem;
+	font-weight: 700;
+	/*text-transform: uppercase;*/
+	letter-spacing: 1.8px;
+	color: rgba(0,0,0,0.7);
+	filter: drop-shadow(0 0 0.2px #444444);
+}
+
+.zipcode-search-box {
+	border: none;
+	border-bottom: 3px solid white;
+	background: rgba(0, 0, 0, 0.0);
+	width: 60%;
+	font-size: 2.3rem;
+	text-transform: uppercase;
+	text-align: center;
+	color: rgba(0, 0, 0, 0.7);
+	font-weight: bolder;
+	letter-spacing: 5px;
+}
+
+input::-webkit-input-placeholder {
+   text-align: center;
+   letter-spacing: 5px;
+   color: rgba(0, 0, 0, 0.5);
+}
+
+input::-moz-placeholder { /* Firefox 18- */
+   text-align: center;
+   letter-spacing: 5px;
+   color: rgba(0, 0, 0, 0.5);  
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;
+   letter-spacing: 5px;
+   color: rgba(0, 0, 0, 0.5);  
+}
+
+input::-ms-input-placeholder {  
+   text-align: center;
+   letter-spacing: 5px;
+   color: rgba(200, 200, 200, 0.5); 
+}
+
+button.zipcode-search-button {
+	border: none;
+	background: transparent;
+	vertical-align: bottom;
+	font-size: 1.4rem;
+}
+
+button.zipcode-search-button:hover {
+	color: rgba(0, 0, 0, 0.7);
+}

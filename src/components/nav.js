@@ -20,8 +20,12 @@ export class Nav extends React.Component {
         let loginButton;
         let registerButton;
         let logoButton;
+        let dashboard;
 
         if (this.props.loggedIn){
+            dashboard = (
+                <Link to="/dashboard">Dashboard</Link>
+            );
             logOutButton = (
                 <a onClick={() => this.logOut()}>Log out</a>
             );
@@ -56,6 +60,7 @@ export class Nav extends React.Component {
                     {/* <a onClick={this.logOut()}>Logout</a> */}
                     {loginButton}
                     {registerButton}
+                    {dashboard}
                     {editProfileButton}
                     {logOutButton}
                 </Menu>

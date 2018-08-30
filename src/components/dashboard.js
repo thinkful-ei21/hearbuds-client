@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 // import requiresLogin from './requires-login';
 import EventList from './event-list';
-import {withRouter} from 'react-router-dom';
+import './dashboard.css';
 
 
 export class Dashboard extends React.Component {
@@ -15,10 +15,9 @@ export class Dashboard extends React.Component {
             greeting = <h2>Welcome!</h2>
         }
         return (
-            <div className="dashboard">
-                {greeting}
-            <EventList zipcode={this.props.match.params.zipcode}/>
-            
+            <div>
+                <h2 className="dashboard-title">Welcome {this.props.username}!</h2>
+                <EventList />
             </div>
         );
     }

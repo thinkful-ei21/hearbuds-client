@@ -1,8 +1,16 @@
+nav {
+    background-color: #48343a;
+}
+
 .logo-button {
     display: inline;
     width: inherit;
     border-radius: 3%;
     font-size: 0.8em;
+}
+
+#brand-text {
+    color: #f5f1df;
 }
 
 a.logo-button:link, a.logo-button:visited {
@@ -45,12 +53,7 @@ a.logo-button:hover, a.logo-button:active {
 
 .bm-item {
     width: inherit;
-    /* display: flex; */
     padding: 10px 10px;
-}
-
-.bm-overlay {
-    background: red;
 }
 
 @media only screen and (min-width: 400px) {
