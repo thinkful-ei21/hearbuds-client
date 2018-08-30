@@ -13,34 +13,31 @@ export class EventList extends React.Component {
             eventId: null
         }
     }
+
+    getEvents() {
+        if (this.props.loggedIn) {
+            this.props.dispatch(getEventList(null));
+        } else {
+            this.props.dispatch(getEventList(this.props.zipcode))
+        }
+    }
+
     componentDidMount() {
         this.setState({
             redirect: null
         })
         console.log("event list is mounting")
-        if (this.props.loggedIn) {
-            this.props.dispatch(getEventList(null));
-        } else {
-            this.props.dispatch(getEventList(this.props.zipcode))
-        }
+        this.getEvents();
     }
 
     prevPageClick() {
         this.props.dispatch(getPrevPage());
-        if (this.props.loggedIn) {
-            this.props.dispatch(getEventList(null));
-        } else {
-            this.props.dispatch(getEventList(this.props.zipcode))
-        }
+        this.getEvents();
     }
 
     nextPageClick(){
         this.props.dispatch(getNextPage());
-        if (this.props.loggedIn) {
-            this.props.dispatch(getEventList(null));
-        } else {
-            this.props.dispatch(getEventList(this.props.zipcode))
-        }
+        this.getEvents();
     }
 
     goToEvent(e) {
