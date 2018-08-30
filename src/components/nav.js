@@ -2,14 +2,16 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import './nav.css';
 import { stack as Menu } from 'react-burger-menu';
 
 export class Nav extends React.Component {
     logOut() {
+        console.log(this.props.loggedIn)
         this.props.dispatch(clearAuth());
         clearAuthToken();
+        console.log(this.props.loggedIn)
     }
 
     render() {
@@ -17,6 +19,7 @@ export class Nav extends React.Component {
         let editProfileButton;
         let loginButton;
         let registerButton;
+        let logoButton;
         let dashboard;
 
         if (this.props.loggedIn){
@@ -29,20 +32,27 @@ export class Nav extends React.Component {
             editProfileButton = (
                 <Link to="/edit">Edit Profile</Link>
             );
+            logoButton = (
+                <Link to="/dashboard" className="logo-button"><h1>Hearbuds</h1></Link>
+            )
         }
         // display these links only when not logged in
         if (!this.props.loggedIn){
             loginButton = (
-            <Link to="/login">Sign in</Link>
+                <Link to="/login"><span>Sign in</span></Link> 
             );
             registerButton = (
-                <Link to="/register">Register</Link>
+                <Link to="/register"><span>Register</span></Link>
+            );
+            logoButton = (
+                <Link to="/" className="logo-button"><h1>Hearbuds</h1></Link>
             )
 
         }
+        console.log(this.props)
         return (
-            <nav role="navigation">
-                <Link to="/dashboard" className="logo-button"><h1 id="brand-text">Hearbuds</h1></Link>
+            <nav>
+                {logoButton}
 
                 <Menu right width={'100%'} isOpen={ false } noOverlay>
                         
@@ -63,4 +73,4 @@ const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser !== null
 });
 
-export default connect(mapStateToProps)(Nav);
+export default withRouter(connect(mapStateToProps)(Nav));
