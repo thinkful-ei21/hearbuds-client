@@ -42,7 +42,7 @@ export class Nav extends React.Component {
         }
         return (
             <nav role="navigation">
-                <Link to="/dashboard" className="logo-button"><h1>Hearbuds</h1></Link>
+                <Link to="/dashboard" className="logo-button"><h1 id="brand-text">Hearbuds</h1></Link>
 
                 <Menu right width={'100%'} isOpen={ false } noOverlay>
                         

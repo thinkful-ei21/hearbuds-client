@@ -2,7 +2,7 @@
 h2 {
     margin-top: 40px;
     font-size:30px;
-    color: #f5f1df;    
+    color: red;    
     width: 250px;
     margin: 0 auto;
 }
@@ -65,7 +65,7 @@ button {
     margin: 0 auto;
 }
 
-@media only screen and (min-width: 650px) {
+@media only screen and (max-width: 600px) {
     form {
         width: 300px;
         margin: 50px auto;
@@ -77,4 +77,3 @@ button {
         margin: 0 auto;
     }
 }
-
