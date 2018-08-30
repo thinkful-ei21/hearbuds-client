@@ -1,0 +1,5 @@
+.dashboard-title {
+    display: flex;
+    font-size: 1.5em;
+    justify-content: center;
+}

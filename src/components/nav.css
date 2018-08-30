@@ -45,12 +45,7 @@ a.logo-button:hover, a.logo-button:active {
 
 .bm-item {
     width: inherit;
-    /* display: flex; */
     padding: 10px 10px;
-}
-
-.bm-overlay {
-    background: red;
 }
 
 @media only screen and (min-width: 400px) {
