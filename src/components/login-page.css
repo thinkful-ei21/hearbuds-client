@@ -1,33 +1,52 @@
+.login-page {
+    padding-top: 30px;
+}
 
 h2 {
     margin-top: 40px;
     font-size:30px;
     color: red;    
-    width: 250px;
+    text-align: center;
     margin: 0 auto;
 }
 
 form {
-    width: 131px;
+    width: 34%;
+    /*padding: 40px;*/
     margin: 25px auto;
-    background-color: rgba(72,52,58, 0.6);
-    border: 1px solid  #f1b879;
-    border-radius: 3%;
+    background-color: white;
+    /*border: 1px solid  #f1b879;*/
+    /*border-radius: 3%;*/
     padding: 20px 35px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .1);
+    /* attempt at putting in an accent border
+    not really liking any colors so far
+    border-top: 3px solid red;*/
 }
 
 label {
     color: #f5f1df;
+    size: 1rem;
 }
 
 .form-input{
   margin-top: 10px;
   margin-bottom: 10px;
+  /*text-align: center;*/
 }
 
 input {
-    padding: 5px;
-    border-radius: 3%;
+    padding: 5px 5px;
+    /*border-radius: 3%;*/
+    height: 38px;
+    width: 100%;
+    border: none;
+    background: rgba(0, 0, 0, 0.1);
+    font-size: 1.4rem;
+}
+
+label {
+    color: black;
 }
 
 .form-error {
@@ -39,17 +58,14 @@ a {
     color: #f5f1df;
 }
 
-button {
+button .login-button {
     color: #f5f1df;
-    padding: 5px;
+    padding: 9px 9px;
     background-color: rgb(72,52,58);
     border: 1px solid #f5f1df;
-    border-radius: 3%;
-}
-
-.button-container {
-    width: 50px;
-    margin: 0 auto;
+    /*border-radius: 3%;*/
+    width: 100%;
+    font-size: 1.4rem;
 }
 
 .register-link {

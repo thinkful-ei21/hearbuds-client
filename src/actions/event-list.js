@@ -60,7 +60,7 @@ export const getProtectedEventList = () => (dispatch, getState) => {
                 'Authorization': `Bearer ${authToken}`
             },
             body: JSON.stringify({
-                query: `{getByZip(page: ${pageNumber}) {id name smallImage dates {start {localDate}}   }  }`
+                query: `{getByZip(page: ${pageNumber}) {id name smallImage largeImage dates {start {localDate}}   }  }`
                 // query: "{getEvents {id name images {url}  dates {start {localDate}}}}"
             })
         })
