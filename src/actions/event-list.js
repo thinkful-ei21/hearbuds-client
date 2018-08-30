@@ -25,7 +25,7 @@ export const getEventList = (zipcode) => (dispatch, getState) => {
         const authToken = getState().auth.authToken;
         let query;
     if (zipcode !== null) {
-        query = `{getByZip(${zipcode}) {id name smallImage dates {start {localDate}}   }  }`
+        query = `{getByZip(zip: ${zipcode}) {id name smallImage dates {start {localDate}}   }  }`
     } else {
         query = `{getByZip {id name smallImage dates {start {localDate}}   }  }`
     }

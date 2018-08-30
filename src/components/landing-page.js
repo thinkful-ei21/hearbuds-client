@@ -1,24 +1,25 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
-import {getEventList} from '../actions/event-list';
+import {Redirect, withRouter} from 'react-router-dom';
+
 
 export class LandingPage extends React.Component {
     constructor(props){
         super(props);
         this.state = {  
-            redirect: null
+            redirect: false,
+            zipcode: null
         }
     }
     
     seeEventList(e) {
         e.preventDefault();
         const zipcode = this.input.value;
-        console.log(zipcode)
-        this.props.dispatch(getEventList(zipcode));
+        console.log("zipcode" , zipcode)
         return this.setState({
-            redirect: <Redirect to="/peek" />
-        }) 
+            redirect: true,
+            zipcode
+        })  
     }
 
     render() {
@@ -26,10 +27,13 @@ export class LandingPage extends React.Component {
         if (this.props.loggedIn) {
             return <Redirect to="/dashboard" />;
         }
+        
+        if (this.state.redirect) {
+            return <Redirect to={"/"+this.state.zipcode} />
+        }
 
         return (
             <div className="landing-page">
-                {this.state.redirect}
                 <p className="landing-page-text">
                     We're revolutionizing the concert going experience!  
                     HearBuds helps you find cool shows and meet fun people
@@ -49,4 +53,4 @@ const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser != null
 });
 
-export default connect(mapStateToProps)(LandingPage)
+export default withRouter(connect(mapStateToProps)(LandingPage));

@@ -2,21 +2,27 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import {getEventList} from '../actions/event-list'
-import {Redirect} from 'react-router-dom';
+import {Redirect, withRouter} from 'react-router-dom';
 
 export class EventList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            redirect: null,
-            message: null
+            redirect: false,
+            message: null,
+            eventId: null
         }
     }
     componentDidMount() {
         this.setState({
             redirect: null
         })
-        this.props.dispatch(getEventList(null));
+        console.log("event list is mounting")
+        if (this.props.loggedIn) {
+            this.props.dispatch(getEventList(null));
+        } else {
+            this.props.dispatch(getEventList(this.props.zipcode))
+        }
     }
 
     goToEvent(e) {
@@ -25,11 +31,12 @@ export class EventList extends React.Component {
         let eventId = e.currentTarget.value;
         if (this.props.loggedIn) {
             return this.setState({
-                redirect: <Redirect to={'/dashboard/'+eventId} />
+                redirect: true,
+                eventId
             })
         } else {
             return this.setState({
-                redirect: null,
+                redirect: false,
                 message: <p>"You must be logged in to access this page"</p>
             })
         }
@@ -48,11 +55,14 @@ export class EventList extends React.Component {
             return <div>{this.props.error}</div>
         }
 
+        if (this.state.redirect) {
+            return <Redirect to={'/dashboard/'+this.state.eventId} />
+        }
+
         if (eventList) {
             return (eventList.map((event, index) => {
                
                return <ul key={index.toString() + 'ul'}>
-                    {this.state.redirect}
                     {this.state.message}
                     <li className='event-name' key={index.toString()+'name'}>{event.name}</li>
                     <li className='event-date' key={index.toString()+'date'}>{event.dates.start.localDate}</li>
@@ -78,5 +88,5 @@ const mapStateToProps = state => {
     };
 }
 
-
-export default requiresLogin()(connect(mapStateToProps)(EventList));
+export default withRouter(connect(mapStateToProps)(EventList));
+// export default requiresLogin()(connect(mapStateToProps)(EventList));

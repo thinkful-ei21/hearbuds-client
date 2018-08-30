@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 // import requiresLogin from './requires-login';
 import EventList from './event-list';
+import {withRouter} from 'react-router-dom';
 
 
 export class Dashboard extends React.Component {
@@ -16,7 +17,7 @@ export class Dashboard extends React.Component {
         return (
             <div className="dashboard">
                 {greeting}
-            <EventList />
+            <EventList zipcode={this.props.match.params.zipcode}/>
             
             </div>
         );
@@ -30,5 +31,5 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(Dashboard);
+export default withRouter(connect(mapStateToProps)(Dashboard));
 // export default requiresLogin()(connect(mapStateToProps)(Dashboard));
