@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
-import {getUnprotectedEventList} from '../actions/event-list';
+import {Redirect} from 'react-router-dom';
+import {getEventList} from '../actions/event-list';
 
 export class LandingPage extends React.Component {
     constructor(props){
@@ -15,7 +15,7 @@ export class LandingPage extends React.Component {
         e.preventDefault();
         const zipcode = this.input.value;
         console.log(zipcode)
-        this.props.dispatch(getUnprotectedEventList(zipcode));
+        this.props.dispatch(getEventList(zipcode));
         return this.setState({
             redirect: <Redirect to="/peek" />
         }) 

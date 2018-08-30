@@ -8,8 +8,6 @@ import {
     GET_EVENT_LIST_REQUEST,
     GET_EVENT_LIST_SUCCESS,
     GET_EVENT_LIST_ERROR,
-    GET_UNPROTECTED_EVENT_LIST_REQUEST,
-    GET_UNPROTECTED_EVENT_LIST_ERROR
 } from '../actions/event-list'
 
 import {
@@ -88,26 +86,6 @@ export default function reducer(state = initialState, action) {
             loading: false,
             error: "an error occured"
         }
-    } else if (action.type === GET_UNPROTECTED_EVENT_LIST_REQUEST) {
-        return {
-            ...state, 
-            loading: true,
-            error: null
-        }
-    }  else if (action.type === GET_UNPROTECTED_EVENT_LIST_REQUEST) {
-        return {
-            ...state,
-            loading: false,
-            eventListPeek: action.eventList,
-            error: null
-        }
-    } else if (action.type === GET_UNPROTECTED_EVENT_LIST_ERROR) {
-        console.log(action.error);
-        return {
-            ...state,
-            loading: false,
-            error: "an error occured"
-        }
-    }
+    } 
     return state;
 }
