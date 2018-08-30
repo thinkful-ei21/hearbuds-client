@@ -1,4 +1,5 @@
 import React from 'react';
+
 require('./comments.css');
 
 export default function Comment(props) {

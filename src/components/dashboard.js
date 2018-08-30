@@ -2,16 +2,16 @@ import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import EventList from './event-list';
+import './dashboard.css';
 
 
 export class Dashboard extends React.Component {
 
     render() {
         return (
-            <div className="dashboard">
-                <h2>Welcome {this.props.username}!</h2>
-            <EventList />
-            
+            <div>
+                <h2 className="dashboard-title">Welcome {this.props.username}!</h2>
+                <EventList />
             </div>
         );
     }
