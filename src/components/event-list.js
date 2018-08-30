@@ -15,16 +15,16 @@ export class EventList extends React.Component {
         this.setState({
             redirect: null
         })
-        this.props.dispatch(getProtectedEventList(this.props.page));
+        this.props.dispatch(getProtectedEventList());
     }
 
     prevPageClick(e) {
         this.props.dispatch(getPrevPage());
-        this.props.dispatch(getProtectedEventList(this.props.page));
+        this.props.dispatch(getProtectedEventList());
     }
     nextPageClick(e) {
         this.props.dispatch(getNextPage());
-        this.props.dispatch(getProtectedEventList(this.props.page))
+        this.props.dispatch(getProtectedEventList())
     }
 
 
@@ -39,6 +39,7 @@ export class EventList extends React.Component {
     render() {
         const {loading, error, eventList, page} = this.props;
         let events;
+        let prevPage;
 
         if (loading) {
             return <div>Loading event list...</div>
@@ -49,7 +50,7 @@ export class EventList extends React.Component {
         }
 
         if (page > 1) {
-            console.log('what the ....')
+            prevPage = <button onClick={() => this.prevPageClick()}>Prev Page</button>
         }
 
         if (eventList) {
@@ -71,7 +72,9 @@ export class EventList extends React.Component {
         return (
             <div>
                 {events}
-                <button onClick={() => this.prevPageClick()}>Prev Page</button>
+                {prevPage}
+                <h1>Page: {page}</h1>
+                {/* <button onClick={() => this.prevPageClick()}>Prev Page</button> */}
                 <button onClick={() => this.nextPageClick()}>Next Page</button>
             </div>
         );
