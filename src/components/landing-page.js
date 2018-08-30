@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import {getUnprotectedEventList} from '../actions/event-list';
+require('./landing-page.css');
 
 export class LandingPage extends React.Component {
     constructor(props){
