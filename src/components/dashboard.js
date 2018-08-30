@@ -17,7 +17,7 @@ export class Dashboard extends React.Component {
         return (
             <div>
                 <h2 className="dashboard-title">Welcome {this.props.username}!</h2>
-                <EventList />
+                <EventList zipcode={this.props.match.params.zipcode}/>
             </div>
         );
     }

@@ -8,13 +8,8 @@ import {
     GET_EVENT_LIST_REQUEST,
     GET_EVENT_LIST_SUCCESS,
     GET_EVENT_LIST_ERROR,
-<<<<<<< HEAD
-=======
-    GET_UNPROTECTED_EVENT_LIST_REQUEST,
-    GET_UNPROTECTED_EVENT_LIST_ERROR,
     GET_NEXT_PAGE,
     GET_PREV_PAGE
->>>>>>> master
 } from '../actions/event-list'
 
 import {

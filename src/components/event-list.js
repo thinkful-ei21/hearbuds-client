@@ -25,16 +25,6 @@ export class EventList extends React.Component {
         }
     }
 
-    prevPageClick(e) {
-        this.props.dispatch(getPrevPage());
-        this.props.dispatch(getEventList());
-    }
-    nextPageClick(e) {
-        this.props.dispatch(getNextPage());
-        this.props.dispatch(getEventList())
-    }
-
-
     goToEvent(e) {
         e.preventDefault();
         let eventId = e.currentTarget.value;

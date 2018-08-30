@@ -34,12 +34,12 @@ export const getEventList = (zipcode) => (dispatch, getState) => {
         console.log(zipcode, "getEventListFired")
         const authToken = getState().auth.authToken;
         let query;
-    if (zipcode !== null) {
-        query = `{getByZip(zip: ${zipcode}) {id name smallImage dates {start {localDate}}   }  }`
-    } else {
-        query = `{getByZip {id name smallImage dates {start {localDate}}   }  }`
-    }
-        const pageNumber = getState().event.page;
+        if (zipcode !== null) {
+            query = `{getByZip(zip: ${zipcode}) {id name smallImage dates {start {localDate}}   }  }`
+        } else {
+            query = `{getByZip {id name smallImage dates {start {localDate}}   }  }`
+        }
+        
         fetch(`${API_BASE_URL}/graphql`, {
             method: 'POST',
             headers: {
