@@ -5,14 +5,34 @@ import {getEvent} from '../actions/single-event';
 import Comments from './comments';
 import RSVPButton from './rsvp-button';
 import AddComment from './add-comment'; 
+import { changeRsvp } from '../actions/single-event';
 
 
 class SingleEvent extends React.Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            id: this.props.match.params.id
+        }
+    }
+
     componentDidMount() {
         // action calls will go here
         const id  = this.props.match.params.id;
-
+        // console.log(id);
         this.props.dispatch(getEvent(id));
+    }
+
+    rsvp() {
+        // grabs the eventId from props passed down
+        // console.log(this.state);
+        const eventId = this.props.match.params.id;
+        // passes in eventId to the action
+        this.props.dispatch(changeRsvp(eventId));
+        
+        // this will call an action that adds user
+        // to the events list of confirmed users
     }
 
     render() {
@@ -50,7 +70,7 @@ class SingleEvent extends React.Component {
                     <img src={smallImage} alt={name} width="200px"></img>
                     {bandLinkXml}
 
-                    <RSVPButton eventId={this.props.match.params.id}/>
+                    <RSVPButton onClick={() => this.rsvp()}/>
                     <Comments />
                     <AddComment />
     
