@@ -50,7 +50,7 @@ class SingleEvent extends React.Component {
                     <img src={smallImage} alt={name} width="200px"></img>
                     {bandLinkXml}
 
-                    <RSVPButton />
+                    <RSVPButton eventId={this.props.match.params.id}/>
                     <Comments />
                     <AddComment />
     
