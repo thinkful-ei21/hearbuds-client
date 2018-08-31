@@ -2,16 +2,23 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
-import {Link, withRouter} from 'react-router-dom';
+import {Link, withRouter, Redirect} from 'react-router-dom';
 import './nav.css';
 import { stack as Menu } from 'react-burger-menu';
 
 export class Nav extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            redirect: false
+        }
+    }
     logOut() {
-        console.log(this.props.loggedIn)
         this.props.dispatch(clearAuth());
         clearAuthToken();
-        console.log(this.props.loggedIn)
+        this.setState({
+            redirect: true
+        })
     }
 
     render() {
@@ -49,6 +56,11 @@ export class Nav extends React.Component {
             )
 
         }
+
+        if (this.state.redirect) {
+            return <Redirect to="/" />
+        }
+
         console.log(this.props)
         return (
             <nav>
