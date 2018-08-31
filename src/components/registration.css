@@ -1,0 +1,13 @@
+.home {
+	padding-top: 30px;
+}
+
+button .register-button {
+	color: #f5f1df;
+  padding: 9px 9px;
+  background-color: rgb(72,52,58);
+  border: 1px solid #f5f1df;
+  /*border-radius: 3%;*/
+  width: 100%;
+  font-size: 1.4rem;
+}
