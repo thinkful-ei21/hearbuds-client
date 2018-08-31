@@ -16,7 +16,7 @@ export class EventList extends React.Component {
 
     getEvents() {
         if (this.props.loggedIn) {
-            this.props.dispatch(getEventList(null));
+            this.props.dispatch(getEventList());
         } else {
             this.props.dispatch(getEventList(this.props.zipcode))
         }
