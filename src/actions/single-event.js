@@ -43,7 +43,6 @@ export const getEvent = (eventId) => (dispatch, getState) => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(({ data }) => {
-        console.log(data);
         // passes the response data into get event success
         dispatch(getEventSuccess(data))
     })

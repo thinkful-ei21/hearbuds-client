@@ -1,9 +1,8 @@
 import React from 'react';
-import {Field, reduxForm, focus} from 'redux-form';
+import {Field, reduxForm} from 'redux-form';
 import Input from './input';
 import {setComment} from '../actions/comments';
 import {reset} from 'redux-form';
-import {getEvent} from '../actions/single-event';
 
 export class AddComment extends React.Component {
 

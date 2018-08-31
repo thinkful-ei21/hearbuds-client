@@ -26,7 +26,7 @@ export class EventList extends React.Component {
         this.setState({
             redirect: null
         })
-        console.log("event list is mounting")
+        
         this.getEvents();
     }
 
