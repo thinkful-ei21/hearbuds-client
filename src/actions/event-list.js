@@ -36,7 +36,7 @@ export const getEventList = (zipcode) => (dispatch, getState) => {
         const pageNumber = getState().event.page;
 
         let query;
-        if (zipcode !== null) {
+        if (zipcode) {
             query = `{getByZip(zip: ${zipcode}, page: ${pageNumber}) {id name smallImage dates {start {localDate}}   }  }`
         } else {
             query = `{getByZip(page: ${pageNumber}) {id name smallImage dates {start {localDate}}   }  }`
