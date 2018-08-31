@@ -10,7 +10,7 @@ import EditPage from './edit-page';
 import LoginPage from './login-page';
 import {refreshAuthToken} from '../actions/auth';
 import SingleEvent from './single-event';
-import EventListPeek from './event-list-peek';
+
 
 export class App extends React.Component {
     componentDidUpdate(prevProps) {
@@ -52,7 +52,7 @@ export class App extends React.Component {
                 <Route exact path="/register" component={RegistrationPage} />
                 <Route exact path="/edit" component={EditPage} />
                 <Route exact path="/dashboard/:id" component={SingleEvent} />
-                <Route exact path="/peek" component={EventListPeek} />
+                <Route exact path="/peek/:zipcode" component={Dashboard} />
             </div>
         );
     }

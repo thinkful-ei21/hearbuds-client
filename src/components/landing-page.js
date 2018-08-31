@@ -1,31 +1,35 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
-import {getUnprotectedEventList} from '../actions/event-list';
 require('./landing-page.css');
 
 export class LandingPage extends React.Component {
     constructor(props){
         super(props);
         this.state = {  
-            redirect: null
+            redirect: false,
+            zipcode: null
         }
     }
     
     seeEventList(e) {
         e.preventDefault();
         const zipcode = this.input.value;
-        console.log(zipcode)
-        this.props.dispatch(getUnprotectedEventList(zipcode));
+        console.log("zipcode" , zipcode)
         return this.setState({
-            redirect: <Redirect to="/peek" />
-        }) 
+            redirect: true,
+            zipcode
+        })  
     }
 
     render() {
 
         if (this.props.loggedIn) {
             return <Redirect to="/dashboard" />;
+        }
+        
+        if (this.state.redirect) {
+            return <Redirect to={"/peek/"+this.state.zipcode} />
         }
 
         let imgSrc = `https://s3.amazonaws.com/fasfawefaf/yvette-de-wit-118721-unsplash.jpg`;
@@ -51,4 +55,4 @@ const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser != null
 });
 
-export default connect(mapStateToProps)(LandingPage)
+export default connect(mapStateToProps)(LandingPage);

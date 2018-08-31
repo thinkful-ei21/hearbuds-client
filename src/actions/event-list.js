@@ -29,29 +29,19 @@ export const getPrevPage = () => ({
     type: GET_PREV_PAGE
 });
 
-export const GET_UNPROTECTED_EVENT_LIST_REQUEST = 'GET_UNPROTECTED_EVENT_LIST_REQUEST';
-export const getUnprotectedEventListRequest = () => ({
-    type: GET_UNPROTECTED_EVENT_LIST_REQUEST
-});
-
-export const GET_UNPROTECTED_EVENT_LIST_SUCCESS = 'GET_UNPROTECTED_EVENT_LIST_SUCCESS';
-export const getUnprotectedEventListSuccess = (eventList) => ({
-    type: GET_UNPROTECTED_EVENT_LIST_SUCCESS,
-    eventList
-});
-
-export const GET_UNPROTECTED_EVENT_LIST_ERROR = 'GET_UNPROTECTED_EVENT_LIST_ERROR';
-export const getUnprotectedEventListError = err => ({
-    type: GET_UNPROTECTED_EVENT_LIST_ERROR,
-    err
-});
-
-export const getProtectedEventList = () => (dispatch, getState) => {
+export const getEventList = (zipcode) => (dispatch, getState) => {
         dispatch(getEventListRequest());
+        console.log(zipcode, "getEventListFired")
         const authToken = getState().auth.authToken;
         const pageNumber = getState().event.page;
 
-    
+        let query;
+        if (zipcode !== null) {
+            query = `{getByZip(zip: ${zipcode}, page: ${pageNumber}) {id name smallImage dates {start {localDate}}   }  }`
+        } else {
+            query = `{getByZip(page: ${pageNumber}) {id name smallImage dates {start {localDate}}   }  }`
+        }
+        
         fetch(`${API_BASE_URL}/graphql`, {
             method: 'POST',
             headers: {
@@ -75,25 +65,3 @@ export const getProtectedEventList = () => (dispatch, getState) => {
             dispatch(getEventListError(err))
         });
 };
-
-export const getUnprotectedEventList = (zipcode) => (dispatch) => {
-    dispatch(getUnprotectedEventListRequest());
-    console.log("getUnprotectedEventList fired", zipcode)
-    fetch(`${API_BASE_URL}/unprotectedEventList/${zipcode}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-        }
-    })
-    .then(res => normalizeResponseErrors(res))
-    .then(res => res.json())
-    .then(({data}) => {
-        console.log(data);
-        dispatch(getUnprotectedEventListSuccess(data))
-    })
-    .catch(err => {
-        console.log('an error occured', err)
-        dispatch(getUnprotectedEventListError(err))
-    });
-}
