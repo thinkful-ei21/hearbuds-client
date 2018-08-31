@@ -1,6 +1,22 @@
 import {API_BASE_URL} from '../config';
 import { normalizeResponseErrors } from './utils';
 
+export const RSVP_REQUEST = 'RSVP_REQUEST';
+export const rsvpRequest = () => ({
+    type: RSVP_REQUEST
+});
+
+export const RSVP_SUCCESS = 'RSVP_SUCCESS';
+export const rsvpSuccess = () => ({
+    type: RSVP_SUCCESS
+});
+
+export const RSVP_ERROR = 'RSVP_ERROR';
+export const rsvpError = err => ({
+    type: RSVP_ERROR,
+    err
+});
+
 export const GET_EVENT_REQUEST = 'GET_EVENT_REQUEST';
 export const getEventRequest = () => ({
     type: GET_EVENT_REQUEST
@@ -50,3 +66,7 @@ export const getEvent = (eventId) => (dispatch, getState) => {
     .catch(err => dispatch(getEventError(err)));
 };
 
+export const changeRsvp = (eventId) => (dispatch, getState) => {
+    console.log(eventId);
+    // mutation
+}
