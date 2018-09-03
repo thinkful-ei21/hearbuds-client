@@ -37,9 +37,9 @@ export const getEventList = (zipcode) => (dispatch, getState) => {
 
         let query;
         if (zipcode) {
-            query = `{getByZip(zip: ${zipcode}, page: ${pageNumber}) {id name smallImage dates {start {localDate}}   }  }`
+            query = `{getByZip(zip: ${zipcode}, page: ${pageNumber}) {id name smallImage venue { name } dates {start {localDate}}   }  }`
         } else {
-            query = `{getByZip(page: ${pageNumber}) {id name smallImage dates {start {localDate}}   }  }`
+            query = `{getByZip(page: ${pageNumber}) {id name smallImage venue { name } dates {start {localDate}}   }  }`
         }
         
         fetch(`${API_BASE_URL}/graphql`, {
@@ -50,7 +50,7 @@ export const getEventList = (zipcode) => (dispatch, getState) => {
                 'Authorization': `Bearer ${authToken}`
             },
             body: JSON.stringify({
-                query: `{getByZip(page: ${pageNumber}) {id name smallImage venue { name } dates {start {localDate}}   }  }`
+                query
                 // query: "{getEvents {id name images {url}  dates {start {localDate}}}}"
             })
         })
