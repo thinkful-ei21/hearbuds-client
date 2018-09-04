@@ -11,8 +11,7 @@ export class LandingPage extends React.Component {
             zipcode: null
         }
     }
-    com
-    ponentDidMount() {
+    componentDidMount() {
         this.input.focus();
     }
     
