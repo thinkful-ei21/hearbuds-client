@@ -1,6 +1,22 @@
 import {API_BASE_URL} from '../config';
 import { normalizeResponseErrors } from './utils';
 
+export const RSVP_REQUEST = 'RSVP_REQUEST';
+export const rsvpRequest = () => ({
+    type: RSVP_REQUEST
+});
+
+export const RSVP_SUCCESS = 'RSVP_SUCCESS';
+export const rsvpSuccess = () => ({
+    type: RSVP_SUCCESS
+});
+
+export const RSVP_ERROR = 'RSVP_ERROR';
+export const rsvpError = err => ({
+    type: RSVP_ERROR,
+    err
+});
+
 export const GET_EVENT_REQUEST = 'GET_EVENT_REQUEST';
 export const getEventRequest = () => ({
     type: GET_EVENT_REQUEST
@@ -43,7 +59,6 @@ export const getEvent = (eventId) => (dispatch, getState) => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(({ data }) => {
-        console.log(data);
         // passes the response data into get event success
         dispatch(getEventSuccess(data))
     })
@@ -51,3 +66,30 @@ export const getEvent = (eventId) => (dispatch, getState) => {
     .catch(err => dispatch(getEventError(err)));
 };
 
+export const changeRsvp = (eventId, attending) => (dispatch, getState) => {
+    dispatch(rsvpRequest());
+    const authToken = getState().auth.authToken;
+    // const attending = getState().event.selectedEvent.attending;
+    console.log(attending);
+    let query = `
+        mutation {
+            setRSVP(attending: ${attending}, eventID: "${eventId}") {id name ticketLink bandLink smallImage comments { id body time user { username id} } dates { start {localDate} } }
+        }
+    `;
+
+    return fetch(`${API_BASE_URL}/graphql`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        },
+        body: JSON.stringify({ query })
+    })
+    // normalizes the error messages
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then( ({ data}) => dispatch(rsvpSuccess(data)))
+    .catch(err => dispatch(rsvpError(err)));
+
+}
