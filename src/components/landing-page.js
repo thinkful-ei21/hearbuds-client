@@ -11,6 +11,9 @@ export class LandingPage extends React.Component {
             zipcode: null
         }
     }
+    componentDidMount() {
+        this.input.focus();
+    }
     
     seeEventList(e) {
         e.preventDefault();
