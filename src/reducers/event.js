@@ -18,6 +18,12 @@ import {
     SET_COMMENT_ERROR
 } from '../actions/comments'
 
+import { 
+    SORT_BY_POP_REQUEST, 
+    SORT_BY_POP_ERROR, 
+    SORT_BY_POP_SUCCESS
+} from '../actions/sort-by';
+
 const initialState = {
     eventList: null,
     page: 1,
@@ -99,6 +105,25 @@ export default function reducer(state = initialState, action) {
             loading: false,
             error: "an error occured"
         }
-    } 
+    } else if (action.type === SORT_BY_POP_REQUEST) {
+        return {
+            ...state,
+            loading: true,
+            error: false,
+        }
+    } else if (action.type === SORT_BY_POP_ERROR) {
+        return {
+            ...state,
+            loading: false,
+            error: action.err,            
+        }
+    } else if (action.type === SORT_BY_POP_SUCCESS) {
+        return {
+            ...state,
+            loading: false,
+            eventList: action.event.getByPop,
+            error: null
+        }
+    }
     return state;
 }

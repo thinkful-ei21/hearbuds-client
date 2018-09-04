@@ -70,7 +70,7 @@ export class EventList extends React.Component {
         }
 
         if (error) {
-            return <div>{this.props.error}</div>
+            return <div>{this.props.error.message}</div>
         }
 
         if (this.state.redirect) {
@@ -87,7 +87,7 @@ export class EventList extends React.Component {
 
 
                return (
-                    <div className="row">
+                    <div className="row"  key={index.toString()}>
                         <div className="col-5">
                             <img className="flex-img" src={event.smallImage} alt="event artist" />
                         </div>
@@ -102,18 +102,6 @@ export class EventList extends React.Component {
                             </div>
                         
                     </div>)
-                    {/*<ul key={index.toString() + 'ul'}>
-                    {this.state.redirect}
-               return <ul key={index.toString() + 'ul'}>
-                    {this.state.message}
->>>>>>> 3f0366d3830b31dbb71f364b8465809f1c2b96d7
-                    <li className='event-name' key={index.toString()+'name'}>{event.name}</li>
-                    <li className='event-date' key={index.toString()+'date'}>{event.dates.start.localDate}</li>
-                    <img className='event-img' src={event.smallImage} width="200px" alt='event artist' />*/}
-                    {/* <li className='event-venue'key={index.toString()+'venue'}>{event.venues[0].name}</li> */}
-                    {/* <li className='event-rsvp-count' key={index.toString()+'rsvp'}>RSVPs:  {event.rsvpCount}</li> */}
-                    
-
             })
 
         }
