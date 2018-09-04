@@ -66,7 +66,30 @@ export const getEvent = (eventId) => (dispatch, getState) => {
     .catch(err => dispatch(getEventError(err)));
 };
 
-export const changeRsvp = (eventId) => (dispatch, getState) => {
-    console.log(eventId);
-    // mutation
+export const changeRsvp = (eventId, attending) => (dispatch, getState) => {
+    dispatch(rsvpRequest());
+    const authToken = getState().auth.authToken;
+    // const attending = getState().event.selectedEvent.attending;
+    console.log(attending);
+    let query = `
+        mutation {
+            setRSVP(attending: ${attending}, eventID: "${eventId}") {id name ticketLink bandLink smallImage comments { id body time user { username id} } dates { start {localDate} } }
+        }
+    `;
+
+    return fetch(`${API_BASE_URL}/graphql`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+        },
+        body: JSON.stringify({ query })
+    })
+    // normalizes the error messages
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then( ({ data}) => dispatch(rsvpSuccess(data)))
+    .catch(err => dispatch(rsvpError(err)));
+
 }

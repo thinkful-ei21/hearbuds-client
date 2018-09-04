@@ -13,23 +13,38 @@ class SingleEvent extends React.Component {
         super(props);
 
         this.state = {
-            id: this.props.match.params.id
+            id: this.props.match.params.id,
+            attending: false
         }
     }
 
+
+
     componentDidMount() {
+        // if (this.props.event && this.props.event.attending) {
+        //     this.setState({
+        //         attending: this.props.event.attending
+        //     });
+        // }
         // action calls will go here
         const id  = this.props.match.params.id;
         // console.log(id);
-        this.props.dispatch(getEvent(id));
+        this.props.dispatch(getEvent(id))
+        .then(() => {
+            if (this.props.event && this.props.event.attending) {
+                this.setState({
+                    attending: this.props.event.attending
+                });
+            }
+        })
+        .catch(err => console.log(err));
     }
 
     rsvp() {
         // grabs the eventId from props passed down
-        // console.log(this.state);
         const eventId = this.props.match.params.id;
         // passes in eventId to the action
-        this.props.dispatch(changeRsvp(eventId));
+        this.props.dispatch(changeRsvp(eventId, !this.state.attending));
         
         // this will call an action that adds user
         // to the events list of confirmed users
@@ -84,6 +99,7 @@ class SingleEvent extends React.Component {
 
 const mapStateToProps = state => {
     return {
+        // attending: state.event.selectedEvent,
         event: state.event.selectedEvent,
         username: state.auth.currentUser.username
     };
