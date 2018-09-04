@@ -1,16 +1,7 @@
 import React from 'react';
 
-export default class RSVPButton extends React.Component {
+export default function RSVPButton(props) {
 
-    rsvp(e) {
-        e.preventDefault();
-        console.log('confirm button pressed');
+    return <button onClick={() => props.onClick()}>RSVP to Event</button>;
 
-        // this will call an action that adds user
-        // to the events list of confirmed users
-    }
-
-    render(){
-        return <button onClick={(e) => this.rsvp(e)}>RSVP to Event</button>;
-    }
 }

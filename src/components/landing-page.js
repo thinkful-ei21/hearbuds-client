@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 require('./landing-page.css');
 
 export class LandingPage extends React.Component {
@@ -15,7 +15,7 @@ export class LandingPage extends React.Component {
     seeEventList(e) {
         e.preventDefault();
         const zipcode = this.input.value;
-        console.log("zipcode" , zipcode)
+        
         return this.setState({
             redirect: true,
             zipcode

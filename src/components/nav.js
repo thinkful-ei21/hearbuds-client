@@ -61,7 +61,6 @@ export class Nav extends React.Component {
             return <Redirect to="/" />
         }
 
-        
         return (
             <nav>
                 {logoButton}
