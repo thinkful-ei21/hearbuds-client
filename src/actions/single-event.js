@@ -50,7 +50,7 @@ export const getEvent = (eventId) => (dispatch, getState) => {
             // query: `{ getById(id: ${eventId}) { id name type}}`
             // query: `{getById(id: "${eventId}") { id name type _embedded { name id } url dates { start { localDate } } } }`
             // query: `{getById(id: "${eventId}") {id name ticketLink bandLink smallImage dates {start {localDate}}   }  }`
-            query: `{getById(id: "${eventId}") {id name ticketLink bandLink smallImage comments { id body time user { username id} } dates { start {localDate} } } }`
+            query: `{getById(id: "${eventId}") {id name ticketLink bandLink smallImage venue { name } comments { id body time user { username id} } dates { start {localDate} } } }`
 
 
         })

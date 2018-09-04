@@ -6,7 +6,8 @@ import Comments from './comments';
 import RSVPButton from './rsvp-button';
 import AddComment from './add-comment'; 
 import { changeRsvp } from '../actions/single-event';
-
+import moment from 'moment';
+import './single-event.css'
 
 class SingleEvent extends React.Component {
     constructor(props){
@@ -64,11 +65,11 @@ class SingleEvent extends React.Component {
 
         if (event) {
            // destructure event props
-            const {name, dates, smallImage, bandLink, ticketLink} = event.event
+            const {name, dates, smallImage, bandLink, ticketLink, venue} = event.event
             // if there is a band link, generate an anchor tag for it
             let bandLinkXml;
             if (bandLink !== null) {
-                bandLinkXml = <a href={bandLink}>Band Website</a>
+                bandLinkXml = <a href={bandLink}>Artist Website</a>
             }
 
             return (
@@ -76,19 +77,30 @@ class SingleEvent extends React.Component {
                 // Link to React Fragment docs: 
                 // https://reactjs.org/docs/fragments.html
                 <React.Fragment>
-                    
-                    <h1>{name}</h1>
-                    <h2>{dates.start.localDate}</h2>
-                    <p>
-                        <a href={ticketLink}>Buy Tickets</a>
-                    </p>
-                    <img src={smallImage} alt={name} width="200px"></img>
-                    {bandLinkXml}
+                    <div className="container">
+                        <div className="row">
+                            <h1 className="center">{name}</h1>
+                            <h3 className="center">Live at {venue.name} - {moment(dates.start.localDate).format("dddd, MMMM Do YYYY")}</h3>
+                            <p className="right">
+                                <a href={ticketLink}>Buy Tickets</a>
+                            </p>
+                        </div>
+                        <div className="row">
+                            <div className="col-6">
+                                <img id="event-image" src={smallImage} alt={name}></img>
+                                {bandLinkXml}
+                            </div>
+                            <div className="col-6">
+                            
+                            </div>
+                        </div>
 
                     <RSVPButton onClick={() => this.rsvp()}/>
                     <Comments />
                     <AddComment />
-    
+
+                    </div>
+
                 </React.Fragment>
             )
         }
