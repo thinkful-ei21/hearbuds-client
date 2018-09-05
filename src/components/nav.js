@@ -44,18 +44,15 @@ export class Nav extends React.Component {
                 <Link to="/register"><span>Register</span></Link>
             );
             logoButton = (
-                <Link to="/" className="logo-button"><h1>Hearbuds</h1></Link>
+                <Link to="/" className="logo-button"><h1 id="brand-text">Hearbuds</h1></Link>
             )
-
         }
-
 
         return (
             <nav>
                 {logoButton}
 
-                <Menu right width={'100%'} isOpen={ false } noOverlay>
-                        
+                <Menu right width={'100%'} isOpen={ false } noOverlay>                   
 
                     {/* <a onClick={this.logOut()}>Logout</a> */}
                     {loginButton}
