@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import {getEvent} from '../actions/single-event';
 import Comments from './comments';
-import RSVPButton from './rsvp-button';
 import AddComment from './add-comment'; 
 import moment from 'moment';
 import './single-event.css'
@@ -15,67 +14,52 @@ class SingleEvent extends React.Component {
         super(props);
 
         this.state = {
-            id: this.props.match.params.id,
-            attending: false
+            id: this.props.match.params.id
         }
     }
 
     componentDidMount() {
-        // if (this.props.event && this.props.event.attending) {
-        //     this.setState({
-        //         attending: this.props.event.attending
-        //     });
-        // }
-        // action calls will go here
         const id  = this.props.match.params.id;
-        console.log(this.props.attending)
         this.props.dispatch(getEvent(id))
-        .then(() => {
-            // console.log("is this async function finished?", this.props.event);
-            if (this.props.event.attending) {
-                this.rsvpCheck();
-            }
-        })
-        .catch(err => console.log(err));
     }
 
+    // checks whether user has rsvp'd to the event
     rsvpCheck() {
-        let arr = this.props.event.attending
-        
-        console.log(arr)
-
-        for (let i = 0; i < arr.length; i++) {
-           if (arr[i].username === this.props.username) {
-             return this.setState({
-                  attending: true
-            })
-            } 
+        // arr is an array of objects with the user id and username of all rsvp'd users
+        let arr = this.props.attending;
+        if (arr === null) {
+            // if the array is null, no one has rsvp'd
+            return false
+        } else {
+            // loop through the array and check to see if it contains the user
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i].username === this.props.username) {
+                  return true;
+                 } 
+             }
+             return false;
         }
-        return this.setState({
-            attending: false
-    })
     }
 
     rsvp() {
         // grabs the eventId from props passed down
         const eventId = this.props.match.params.id;
-        // passes in eventId to the action
-        this.props.dispatch(changeRsvp(eventId, !this.state.attending));
-        
-        
-        // this will call an action that adds user
-        // to the events list of confirmed users
+        // see if user has already rsvp'd
+        const attending = this.rsvpCheck();
+        // passes in eventId and the opposite of user's current rsvp status to the action
+        this.props.dispatch(changeRsvp(eventId, !attending));
     }
 
     render() {
         // destructuring props 
         const { loading, error, event } = this.props;
+        // set the text in rsvp button depending on user's rsvp status
+        let rsvpBool = this.rsvpCheck();
         let rsvpButton;
-        
-        if (this.state.attending) {
+        if (rsvpBool) {
             rsvpButton = "Cancel RSVP"
         } else {
-            rsvpButton = "RSVP to event"
+            rsvpButton = "RSVP to this event!"
         }
 
         if (loading) {

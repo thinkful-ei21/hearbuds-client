@@ -60,7 +60,7 @@ export default function reducer(state = initialState, action) {
             error: null
         }
     } else if (action.type === RSVP_SUCCESS) {
-        console.log("here's the rsvp action success data",action.data.setRSVP.attending, state.selectedEvent, state.selectedEvent.event)
+        console.log("here's the rsvp action success data: ",action.data.setRSVP.attending)
         return {
             ...state,
             loading: false,
