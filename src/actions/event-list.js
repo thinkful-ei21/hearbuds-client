@@ -50,6 +50,7 @@ export const getEventList = (zipcode) => (dispatch, getState) => {
                 'Authorization': `Bearer ${authToken}`
             },
             body: JSON.stringify({
+
                 query
                 // query: "{getEvents {id name images {url}  dates {start {localDate}}}}"
             })

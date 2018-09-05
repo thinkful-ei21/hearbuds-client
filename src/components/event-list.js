@@ -85,7 +85,6 @@ export class EventList extends React.Component {
                     prevPage = <button onClick={() => this.prevPageClick()}>Prev Page</button>
                 }
 
-
                return (
                     <div className="row"  key={index.toString()}>
                         <div className="col-5">
