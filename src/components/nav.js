@@ -55,11 +55,7 @@ export class Nav extends React.Component {
                 <Link to="/" className="logo-button"><h1>Hearbuds</h1></Link>
             )
 
-        }
-
-        // if (this.state.redirect) {
-        //     return <Redirect to="/" />
-        // }
+        }      
 
         return (
             <nav>
