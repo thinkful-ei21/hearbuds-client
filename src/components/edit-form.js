@@ -21,7 +21,7 @@ export class EditForm extends React.Component {
             password, 
             zip,
         };
-        console.log(user);
+        
         return this.props
             .dispatch(editUser(user))
             .then(() => this.props.dispatch(login(user.username, user.password)));

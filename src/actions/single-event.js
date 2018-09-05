@@ -58,7 +58,6 @@ export const getEvent = (eventId) => (dispatch, getState) => {
     .then(res => res.json())
     .then(({ data }) => {
         // passes the response data into get event success
-        console.log("data from the getEvent request", data)
         dispatch(getEventSuccess(data))
     })
     // catches the error
@@ -68,7 +67,7 @@ export const getEvent = (eventId) => (dispatch, getState) => {
 export const changeRsvp = (eventId, attending) => (dispatch, getState) => {
     dispatch(rsvpRequest());
     const authToken = getState().auth.authToken;
-    console.log("changeRSVP action param: ", attending);
+    
     let query = `
         mutation {
             setRSVP(attending: ${attending}, eventID: "${eventId}") {attending {id username}}
