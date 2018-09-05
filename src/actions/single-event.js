@@ -7,8 +7,9 @@ export const rsvpRequest = () => ({
 });
 
 export const RSVP_SUCCESS = 'RSVP_SUCCESS';
-export const rsvpSuccess = () => ({
-    type: RSVP_SUCCESS
+export const rsvpSuccess = (data) => ({
+    type: RSVP_SUCCESS,
+    data
 });
 
 export const RSVP_ERROR = 'RSVP_ERROR';
@@ -50,9 +51,7 @@ export const getEvent = (eventId) => (dispatch, getState) => {
             // query: `{ getById(id: ${eventId}) { id name type}}`
             // query: `{getById(id: "${eventId}") { id name type _embedded { name id } url dates { start { localDate } } } }`
             // query: `{getById(id: "${eventId}") {id name ticketLink bandLink smallImage dates {start {localDate}}   }  }`
-            query: `{getById(id: "${eventId}") {id name ticketLink bandLink smallImage venue { name } comments { id body time user { username id} } dates { start {localDate} } } }`
-
-
+            query: `{getById(id: "${eventId}") {id name attending {username} ticketLink bandLink smallImage venue { name } comments { id body time user { username id} } dates { start {localDate} } } }`
         })
     })
     // makes the response errors more readable
@@ -60,6 +59,7 @@ export const getEvent = (eventId) => (dispatch, getState) => {
     .then(res => res.json())
     .then(({ data }) => {
         // passes the response data into get event success
+        console.log("data from the getEvent request", data)
         dispatch(getEventSuccess(data))
     })
     // catches the error
@@ -70,10 +70,10 @@ export const changeRsvp = (eventId, attending) => (dispatch, getState) => {
     dispatch(rsvpRequest());
     const authToken = getState().auth.authToken;
     // const attending = getState().event.selectedEvent.attending;
-    console.log(attending);
+    console.log("changeRSVP action param: ", attending);
     let query = `
         mutation {
-            setRSVP(attending: ${attending}, eventID: "${eventId}") {id name ticketLink bandLink smallImage comments { id body time user { username id} } dates { start {localDate} } }
+            setRSVP(attending: ${attending}, eventID: "${eventId}") {attending {id username}}
         }
     `;
 

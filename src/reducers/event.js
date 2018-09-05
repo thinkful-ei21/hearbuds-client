@@ -32,6 +32,7 @@ const initialState = {
     page: 1,
     eventListPeek: null,
     selectedEvent: null,
+    attending: null,
     loading: false,
     error: null
 }
@@ -48,7 +49,6 @@ export default function reducer(state = initialState, action) {
             ...state,
             selectedEvent: {
                 event: action.event.getById,
-                attending: false,
             },
             loading: false,
             error: null
@@ -60,13 +60,26 @@ export default function reducer(state = initialState, action) {
             error: null
         }
     } else if (action.type === RSVP_SUCCESS) {
+        console.log("here's the rsvp action success data",action.data.setRSVP.attending, state.selectedEvent, state.selectedEvent.event)
         return {
             ...state,
             loading: false,
-            selectedEvent: {
-                event: action.event.getById
-            }
+            attending: action.data.setRSVP.attending,
+            // selectedEvent: {
+            //     ...state.selectedEvent,
+            //     event: {
+            //         ...state.selectedEvent.event,
+            //         attending: action.data.setRSVP.attending
+            //     }
+            // },
+            error: null
         }
+      } else if (action.type === RSVP_ERROR) {
+            return {
+                ...state,
+                loading: false,
+                error: "there was an error with the rsvp request"
+            }
     } else if(action.type === GET_EVENT_ERROR) {
         return {
             ...state,

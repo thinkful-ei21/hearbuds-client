@@ -28,16 +28,32 @@ class SingleEvent extends React.Component {
         // }
         // action calls will go here
         const id  = this.props.match.params.id;
-        // console.log(id);
+        console.log(this.props.attending)
         this.props.dispatch(getEvent(id))
         .then(() => {
-            if (this.props.event && this.props.event.attending) {
-                this.setState({
-                    attending: this.props.event.attending
-                });
+            // console.log("is this async function finished?", this.props.event);
+            if (this.props.event.attending) {
+                this.rsvpCheck();
             }
         })
         .catch(err => console.log(err));
+    }
+
+    rsvpCheck() {
+        let arr = this.props.event.attending
+        
+        console.log(arr)
+
+        for (let i = 0; i < arr.length; i++) {
+           if (arr[i].username === this.props.username) {
+             return this.setState({
+                  attending: true
+            })
+            } 
+        }
+        return this.setState({
+            attending: false
+    })
     }
 
     rsvp() {
@@ -46,6 +62,7 @@ class SingleEvent extends React.Component {
         // passes in eventId to the action
         this.props.dispatch(changeRsvp(eventId, !this.state.attending));
         
+        
         // this will call an action that adds user
         // to the events list of confirmed users
     }
@@ -53,6 +70,13 @@ class SingleEvent extends React.Component {
     render() {
         // destructuring props 
         const { loading, error, event } = this.props;
+        let rsvpButton;
+        
+        if (this.state.attending) {
+            rsvpButton = "Cancel RSVP"
+        } else {
+            rsvpButton = "RSVP to event"
+        }
 
         if (loading) {
             return <div>Loading event...</div>;
@@ -95,7 +119,7 @@ class SingleEvent extends React.Component {
                         </div>
                         </div>
 
-                    <RSVPButton onClick={() => this.rsvp()}/>
+                    <button onClick={() => this.rsvp()}>{rsvpButton}</button>
                     <Comments />
                     <AddComment />
     
@@ -109,7 +133,7 @@ class SingleEvent extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        // attending: state.event.selectedEvent,
+        attending: state.event.attending,
         event: state.event.selectedEvent,
         username: state.auth.currentUser.username
     };
