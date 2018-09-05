@@ -3,9 +3,8 @@ import { shallow } from 'enzyme';
 
 import App from './app'
 
-describe('<App />', function() {
+describe(<App />, function() {
     it('Renders without crashing', () => {
         shallow(<App />);
     });
-
 })
