@@ -61,11 +61,11 @@ class SingleEvent extends React.Component {
         } else {
             rsvpButton = "RSVP to this event!"
         }
-
+        // display a message while componenet is loading
         if (loading) {
-            return <div>Loading event...</div>;
+            return <div>Loading...</div>;
         }
-
+        // display a message if there is an error
         if (error) {
             return <div>{this.props.error}</div>;
         }
@@ -123,5 +123,5 @@ const mapStateToProps = state => {
     };
 };
 
-// export default connect(mapStateToProps)(SingleEvent);
+
 export default requiresLogin()(connect(mapStateToProps)(SingleEvent));

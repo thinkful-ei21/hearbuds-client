@@ -60,18 +60,10 @@ export default function reducer(state = initialState, action) {
             error: null
         }
     } else if (action.type === RSVP_SUCCESS) {
-        console.log("here's the rsvp action success data: ",action.data.setRSVP.attending)
         return {
             ...state,
             loading: false,
             attending: action.data.setRSVP.attending,
-            // selectedEvent: {
-            //     ...state.selectedEvent,
-            //     event: {
-            //         ...state.selectedEvent.event,
-            //         attending: action.data.setRSVP.attending
-            //     }
-            // },
             error: null
         }
       } else if (action.type === RSVP_ERROR) {
