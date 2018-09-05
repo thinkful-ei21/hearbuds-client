@@ -7,7 +7,6 @@ import AddComment from './add-comment';
 import moment from 'moment';
 import './single-event.css'
 import { changeRsvp } from '../actions/single-event';
-import './single-event.css'
 
 class SingleEvent extends React.Component {
     constructor(props){
@@ -27,7 +26,7 @@ class SingleEvent extends React.Component {
     rsvpCheck() {
         // arr is an array of objects with the user id and username of all rsvp'd users
         let arr = this.props.attending;
-        console.log(arr);
+        
         if (arr === null) {
             // if the array is null, no one has rsvp'd
             return false
@@ -103,13 +102,14 @@ class SingleEvent extends React.Component {
                             </div>
                         </div>
 
-                        </div>
+                        
 
                     <button onClick={() => this.rsvp()}>{rsvpButton}</button>
 
                     <Comments />
                     <AddComment />
 
+                    </div>
                     
 
                 </React.Fragment>

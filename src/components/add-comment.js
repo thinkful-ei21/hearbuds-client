@@ -8,7 +8,7 @@ export class AddComment extends React.Component {
 
 	onSubmit(values) {
 		const {body} = values;
-		// console.log(body);
+		
 		this.props.dispatch(setComment(body));
 		this.props.dispatch(reset('comment'));
 	}

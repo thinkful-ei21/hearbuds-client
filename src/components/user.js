@@ -6,7 +6,7 @@ export default class User extends React.Component {
 		super(props);
 	}
 	handleClick() {
-		console.log('clicked');
+		
 		fetch(`${API_BASE_URL}/graphql`, {
         method: 'POST',
         headers: {

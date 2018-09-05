@@ -31,7 +31,7 @@ export const getPrevPage = () => ({
 
 export const getEventList = (zipcode) => (dispatch, getState) => {
         dispatch(getEventListRequest());
-        console.log(zipcode, "getEventListFired")
+        
         const authToken = getState().auth.authToken;
         const pageNumber = getState().events.page;
 
@@ -58,11 +58,9 @@ export const getEventList = (zipcode) => (dispatch, getState) => {
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .then(({data}) => {
-            console.log(data);
             dispatch(getEventListSuccess(data))
         })
         .catch(err => {
-            console.log('an error occured')
             dispatch(getEventListError(err))
         });
 };

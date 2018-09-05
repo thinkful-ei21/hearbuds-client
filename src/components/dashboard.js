@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 import EventList from './event-list';
 import './dashboard.css';
 import SortBy from './sort-by';
@@ -7,7 +8,13 @@ import SortBy from './sort-by';
 
 export class Dashboard extends React.Component {
 
+
     render() {
+
+        if (!this.props.loading && !this.props.match.params.zipcode && !this.props.username) {
+            return <Redirect to="/" />;
+        }
+
         let greeting;
         if(this.props.username) {
             greeting = <h2>Welcome back, {this.props.username.username}!</h2>
@@ -26,7 +33,8 @@ export class Dashboard extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        username: state.auth.currentUser
+        username: state.auth.currentUser,
+        loading: state.auth.loading,
     };
 };
 

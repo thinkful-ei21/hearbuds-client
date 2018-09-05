@@ -25,7 +25,7 @@ export class SortBy extends React.Component {
     }
 
     popularSort() {
-        console.log("sort by pop dispatched");
+
         this.props.dispatch(sortByPop())
         this.setState({
             show: null
