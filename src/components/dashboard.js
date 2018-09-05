@@ -11,7 +11,7 @@ export class Dashboard extends React.Component {
 
     render() {
 
-        if (!this.props.match.params.zipcode) {
+        if (!this.props.loading && !this.props.match.params.zipcode && !this.props.username) {
             return <Redirect to="/" />;
         }
 
@@ -33,7 +33,8 @@ export class Dashboard extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        username: state.auth.currentUser
+        username: state.auth.currentUser,
+        loading: state.auth.loading,
     };
 };
 
