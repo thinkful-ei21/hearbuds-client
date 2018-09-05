@@ -22,7 +22,7 @@ export const setCommentRequest = () => ({
 export const setComment = (body) => (dispatch, getState) => {
     dispatch(setCommentRequest());
     const authToken = loadAuthToken();
-    const eventId = getState().event.selectedEvent.event.id;
+    const eventId = getState().singleEvent.selectedEvent.event.id;
     let query = `
         mutation {
             setComment(body: "${body}", eventId: "${eventId}")

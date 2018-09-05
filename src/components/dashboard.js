@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-// import requiresLogin from './requires-login';
 import EventList from './event-list';
 import './dashboard.css';
 import SortBy from './sort-by';
@@ -32,4 +31,4 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(Dashboard);
-// export default requiresLogin()(connect(mapStateToProps)(Dashboard));
+

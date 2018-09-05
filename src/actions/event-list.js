@@ -33,7 +33,7 @@ export const getEventList = (zipcode) => (dispatch, getState) => {
         dispatch(getEventListRequest());
         console.log(zipcode, "getEventListFired")
         const authToken = getState().auth.authToken;
-        const pageNumber = getState().event.page;
+        const pageNumber = getState().events.page;
 
         let query;
         if (zipcode) {
