@@ -7,7 +7,6 @@ import AddComment from './add-comment';
 import moment from 'moment';
 import './single-event.css'
 import { changeRsvp } from '../actions/single-event';
-import moment from 'moment';
 import './single-event.css'
 
 class SingleEvent extends React.Component {
@@ -111,7 +110,7 @@ class SingleEvent extends React.Component {
                     <Comments />
                     <AddComment />
 
-                    </div>
+                    
 
                 </React.Fragment>
             )
