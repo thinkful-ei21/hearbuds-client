@@ -12,7 +12,7 @@ export class Comments extends React.Component {
         
 
         if (loading) {
-           return <h1>loading comments...</h1>
+           return <h1>loading...</h1>
         }
 
         if (error) {
@@ -40,9 +40,9 @@ export class Comments extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        comments: state.event.selectedEvent.event.comments,
-        loading: state.event.loading,
-        error: state.event.error
+        comments: state.singleEvent.selectedEvent.event.comments,
+        loading: state.singleEvent.loading,
+        error: state.singleEvent.error
     };
 };
 // export default connect(mapStateToProps)(Comments);

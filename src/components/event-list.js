@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import requiresLogin from './requires-login';
 import {getEventList, getNextPage, getPrevPage} from '../actions/event-list'
 import {Redirect} from 'react-router-dom';
+import moment from 'moment';
+require('./event-list.css')
 
 export class EventList extends React.Component {
     constructor(props) {
@@ -68,7 +69,7 @@ export class EventList extends React.Component {
         }
 
         if (error) {
-            return <div>{this.props.error}</div>
+            return <div>{this.props.error.message}</div>
         }
 
         if (this.state.redirect) {
@@ -83,21 +84,27 @@ export class EventList extends React.Component {
                     prevPage = <button onClick={() => this.prevPageClick()}>Prev Page</button>
                 }
 
-               return <ul key={index.toString() + 'ul'}>
-                    {this.state.message}
-                    <li className='event-name' key={index.toString()+'name'}>{event.name}</li>
-                    <li className='event-date' key={index.toString()+'date'}>{event.dates.start.localDate}</li>
-                    <img className='event-img' src={event.smallImage} width="200px" alt='event artist' />
-                    {/* <li className='event-venue'key={index.toString()+'venue'}>{event.venues[0].name}</li> */}
-                    {/* <li className='event-rsvp-count' key={index.toString()+'rsvp'}>RSVPs:  {event.rsvpCount}</li> */}
-                    <button type='submit' value={event.id} onClick={(e) => this.goToEvent(e)}>See more info</button>
-                </ul>
+               return (
+                    <div className="row"  key={index.toString()}>
+                        <div className="col-5">
+                            <img className="flex-img" src={event.smallImage} alt="event artist" />
+                        </div>
+                        <div className="col-4">
+                            <div className="event-name">{event.name}</div>
+                            <p>{moment(event.dates.start.localDate).calendar() } - {moment(event.dates.start.localDate).from(moment())}</p>
+                            <p className="event-details">{event.venue.name} - x {event.rsvpCount} attending</p>
 
+                        </div>
+                            <div className="col-3">
+                                <button className="info-button" type='submit' value={event.id} onClick={(e) => this.goToEvent(e)}>See more info</button>
+                            </div>
+                        
+                    </div>)
             })
 
         }
         return (
-            <div>
+            <div className="container">
                 {events}
                 {prevPage}
                 <h1>Page: {page}</h1>
@@ -111,12 +118,11 @@ export class EventList extends React.Component {
 const mapStateToProps = state => {
     return {
         loggedIn: state.auth.currentUser != null,
-        eventList: state.event.eventList,
-        page: state.event.page,
-        loading: state.event.loading,
-        error: state.event.error
+        eventList: state.events.eventList,
+        page: state.events.page,
+        loading: state.events.loading,
+        error: state.events.error
     };
 }
 
 export default connect(mapStateToProps)(EventList);
-// export default requiresLogin()(connect(mapStateToProps)(EventList));

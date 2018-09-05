@@ -33,13 +33,13 @@ export const getEventList = (zipcode) => (dispatch, getState) => {
         dispatch(getEventListRequest());
         console.log(zipcode, "getEventListFired")
         const authToken = getState().auth.authToken;
-        const pageNumber = getState().event.page;
+        const pageNumber = getState().events.page;
 
         let query;
         if (zipcode) {
-            query = `{getByZip(zip: ${zipcode}, page: ${pageNumber}) {id name smallImage dates {start {localDate}}   }  }`
+            query = `{getByZip(zip: ${zipcode}, page: ${pageNumber}) {id name smallImage venue { name } dates {start {localDate}}   }  }`
         } else {
-            query = `{getByZip(page: ${pageNumber}) {id name smallImage dates {start {localDate}}   }  }`
+            query = `{getByZip(page: ${pageNumber}) {id name smallImage venue { name } dates {start {localDate}}   }  }`
         }
         
         fetch(`${API_BASE_URL}/graphql`, {
