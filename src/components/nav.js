@@ -34,7 +34,7 @@ export class Nav extends React.Component {
                 <Link to="/dashboard">Dashboard</Link>
             );
             logOutButton = (
-                <a onClick={() => this.logOut()}>Log out</a>
+                <div onClick={() => this.logOut()}><Link to="/">Log out</Link></div>
             );
             editProfileButton = (
                 <Link to="/edit">Edit Profile</Link>
@@ -57,9 +57,9 @@ export class Nav extends React.Component {
 
         }
 
-        if (this.state.redirect) {
-            return <Redirect to="/" />
-        }
+        // if (this.state.redirect) {
+        //     return <Redirect to="/" />
+        // }
 
         return (
             <nav>
