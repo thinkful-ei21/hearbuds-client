@@ -51,7 +51,7 @@ export const getEventList = (zipcode) => (dispatch, getState) => {
             },
             body: JSON.stringify({
 
-                query 
+                query
                 // query: "{getEvents {id name images {url}  dates {start {localDate}}}}"
             })
         })

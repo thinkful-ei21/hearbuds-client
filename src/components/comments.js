@@ -12,7 +12,7 @@ export class Comments extends React.Component {
         
 
         if (loading) {
-           return <h1>loading comments...</h1>
+           return <h1>loading...</h1>
         }
 
         if (error) {

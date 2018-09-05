@@ -21,11 +21,18 @@ import {
     SET_COMMENT_ERROR
 } from '../actions/comments'
 
+import { 
+    SORT_BY_POP_REQUEST, 
+    SORT_BY_POP_ERROR, 
+    SORT_BY_POP_SUCCESS
+} from '../actions/sort-by';
+
 const initialState = {
     eventList: null,
     page: 1,
     eventListPeek: null,
     selectedEvent: null,
+    attending: null,
     loading: false,
     error: null
 }
@@ -42,7 +49,6 @@ export default function reducer(state = initialState, action) {
             ...state,
             selectedEvent: {
                 event: action.event.getById,
-                attending: false,
             },
             loading: false,
             error: null
@@ -57,10 +63,15 @@ export default function reducer(state = initialState, action) {
         return {
             ...state,
             loading: false,
-            selectedEvent: {
-                event: action.event.getById
-            }
+            attending: action.data.setRSVP.attending,
+            error: null
         }
+      } else if (action.type === RSVP_ERROR) {
+            return {
+                ...state,
+                loading: false,
+                error: "there was an error with the rsvp request"
+            }
     } else if(action.type === GET_EVENT_ERROR) {
         return {
             ...state,
@@ -116,6 +127,25 @@ export default function reducer(state = initialState, action) {
             loading: false,
             error: "an error occured"
         }
-    } 
+    } else if (action.type === SORT_BY_POP_REQUEST) {
+        return {
+            ...state,
+            loading: true,
+            error: false,
+        }
+    } else if (action.type === SORT_BY_POP_ERROR) {
+        return {
+            ...state,
+            loading: false,
+            error: action.err,            
+        }
+    } else if (action.type === SORT_BY_POP_SUCCESS) {
+        return {
+            ...state,
+            loading: false,
+            eventList: action.event.getByPop,
+            error: null
+        }
+    }
     return state;
 }

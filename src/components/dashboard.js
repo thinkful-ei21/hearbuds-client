@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 // import requiresLogin from './requires-login';
 import EventList from './event-list';
 import './dashboard.css';
+import SortBy from './sort-by';
 
 
 export class Dashboard extends React.Component {
@@ -17,6 +18,7 @@ export class Dashboard extends React.Component {
         return (
             <div>
                 {greeting}
+                <SortBy />
                 <EventList zipcode={this.props.match.params.zipcode}/>
             </div>
         );

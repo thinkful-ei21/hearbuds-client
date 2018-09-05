@@ -3,8 +3,9 @@ import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import {getEvent} from '../actions/single-event';
 import Comments from './comments';
-import RSVPButton from './rsvp-button';
 import AddComment from './add-comment'; 
+import moment from 'moment';
+import './single-event.css'
 import { changeRsvp } from '../actions/single-event';
 import moment from 'moment';
 import './single-event.css'
@@ -14,51 +15,58 @@ class SingleEvent extends React.Component {
         super(props);
 
         this.state = {
-            id: this.props.match.params.id,
-            attending: false
+            id: this.props.match.params.id
         }
     }
 
-
-
     componentDidMount() {
-        // if (this.props.event && this.props.event.attending) {
-        //     this.setState({
-        //         attending: this.props.event.attending
-        //     });
-        // }
-        // action calls will go here
         const id  = this.props.match.params.id;
-        // console.log(id);
         this.props.dispatch(getEvent(id))
-        .then(() => {
-            if (this.props.event && this.props.event.attending) {
-                this.setState({
-                    attending: this.props.event.attending
-                });
-            }
-        })
-        .catch(err => console.log(err));
+    }
+
+    // checks whether user has rsvp'd to the event
+    rsvpCheck() {
+        // arr is an array of objects with the user id and username of all rsvp'd users
+        let arr = this.props.attending;
+        if (arr === null) {
+            // if the array is null, no one has rsvp'd
+            return false
+        } else {
+            // loop through the array and check to see if it contains the user
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i].username === this.props.username) {
+                  return true;
+                 } 
+             }
+             return false;
+        }
     }
 
     rsvp() {
         // grabs the eventId from props passed down
         const eventId = this.props.match.params.id;
-        // passes in eventId to the action
-        this.props.dispatch(changeRsvp(eventId, !this.state.attending));
-        
-        // this will call an action that adds user
-        // to the events list of confirmed users
+        // see if user has already rsvp'd
+        const attending = this.rsvpCheck();
+        // passes in eventId and the opposite of user's current rsvp status to the action
+        this.props.dispatch(changeRsvp(eventId, !attending));
     }
 
     render() {
         // destructuring props 
         const { loading, error, event } = this.props;
-
-        if (loading) {
-            return <div>Loading event...</div>;
+        // set the text in rsvp button depending on user's rsvp status
+        let rsvpBool = this.rsvpCheck();
+        let rsvpButton;
+        if (rsvpBool) {
+            rsvpButton = "Cancel RSVP"
+        } else {
+            rsvpButton = "RSVP to this event!"
         }
-
+        // display a message while componenet is loading
+        if (loading) {
+            return <div>Loading...</div>;
+        }
+        // display a message if there is an error
         if (error) {
             return <div>{this.props.error}</div>;
         }
@@ -95,7 +103,10 @@ class SingleEvent extends React.Component {
                             </div>
                         </div>
 
-                    <RSVPButton onClick={() => this.rsvp()}/>
+                        </div>
+
+                    <button onClick={() => this.rsvp()}>{rsvpButton}</button>
+
                     <Comments />
                     <AddComment />
 
@@ -111,11 +122,11 @@ class SingleEvent extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        // attending: state.event.selectedEvent,
+        attending: state.event.attending,
         event: state.event.selectedEvent,
         username: state.auth.currentUser.username
     };
 };
 
-// export default connect(mapStateToProps)(SingleEvent);
+
 export default requiresLogin()(connect(mapStateToProps)(SingleEvent));
