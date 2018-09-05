@@ -12,7 +12,9 @@ export class LandingPage extends React.Component {
         }
     }
     componentDidMount() {
-        this.input.focus();
+        if (this.input) {
+            this.input.focus();
+        }
     }
     
     seeEventList(e) {

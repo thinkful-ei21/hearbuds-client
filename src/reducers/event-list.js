@@ -21,18 +21,16 @@ import {
 //     SET_COMMENT_ERROR
 // } from '../actions/comments'
 
-import { 
-    SORT_BY_POP_REQUEST, 
-    SORT_BY_POP_ERROR, 
-    SORT_BY_POP_SUCCESS
-} from '../actions/sort-by';
+// import { 
+//     SORT_BY_POP_REQUEST, 
+//     SORT_BY_POP_ERROR, 
+//     SORT_BY_POP_SUCCESS
+// } from '../actions/sort-by';
 
 const initialState = {
     eventList: null,
     page: 1,
     eventListPeek: null,
-    // selectedEvent: null,
-    // attending: null,
     loading: false,
     error: null
 }
@@ -68,25 +66,26 @@ export default function reducer(state = initialState, action) {
             ...state,
             page: state.page - 1
         }
-    } else if (action.type === SORT_BY_POP_REQUEST) {
-        return {
-            ...state,
-            loading: true,
-            error: false,
-        }
-    } else if (action.type === SORT_BY_POP_ERROR) {
-        return {
-            ...state,
-            loading: false,
-            error: action.err,            
-        }
-    } else if (action.type === SORT_BY_POP_SUCCESS) {
-        return {
-            ...state,
-            loading: false,
-            eventList: action.event.getByPop,
-            error: null
-        }
     }
+    // } else if (action.type === SORT_BY_POP_REQUEST) {
+    //     return {
+    //         ...state,
+    //         loading: true,
+    //         error: false,
+    //     }
+    // } else if (action.type === SORT_BY_POP_ERROR) {
+    //     return {
+    //         ...state,
+    //         loading: false,
+    //         error: action.err,            
+    //     }
+    // } else if (action.type === SORT_BY_POP_SUCCESS) {
+    //     return {
+    //         ...state,
+    //         loading: false,
+    //         eventList: action.event.getByPop,
+    //         error: null
+    //     }
+    // }
     return state;
 }
