@@ -68,7 +68,6 @@ export const getEvent = (eventId) => (dispatch, getState) => {
 export const changeRsvp = (eventId, attending) => (dispatch, getState) => {
     dispatch(rsvpRequest());
     const authToken = getState().auth.authToken;
-    // const attending = getState().event.selectedEvent.attending;
     console.log("changeRSVP action param: ", attending);
     let query = `
         mutation {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import requiresLogin from './requires-login';
 import {getEventList, getNextPage, getPrevPage} from '../actions/event-list'
 import {Redirect} from 'react-router-dom';
 import moment from 'moment';
@@ -119,12 +118,11 @@ export class EventList extends React.Component {
 const mapStateToProps = state => {
     return {
         loggedIn: state.auth.currentUser != null,
-        eventList: state.event.eventList,
-        page: state.event.page,
-        loading: state.event.loading,
-        error: state.event.error
+        eventList: state.events.eventList,
+        page: state.events.page,
+        loading: state.events.loading,
+        error: state.events.error
     };
 }
 
 export default connect(mapStateToProps)(EventList);
-// export default requiresLogin()(connect(mapStateToProps)(EventList));
