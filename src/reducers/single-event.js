@@ -49,7 +49,7 @@ export default function reducer(state = initialState, action) {
             error: null
         }
     } else if (action.type === RSVP_SUCCESS) {
-        console.log("rsvp success")
+        
         return {
             ...state,
             loading: false,
@@ -69,7 +69,7 @@ export default function reducer(state = initialState, action) {
             error: null
         }
     } else if (action.type === SET_COMMENT_SUCCESS) {
-        console.log(action.comments)
+        
         return {
             ...state,
             loading: false,

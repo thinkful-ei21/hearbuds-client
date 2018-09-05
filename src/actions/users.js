@@ -28,7 +28,7 @@ export const registerUser = user => dispatch => {
 
 export const editUser = user => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
-    //console.log(JSON.stringify(user));
+    
     return fetch(`${API_BASE_URL}/users/edit`, {
         method: 'PUT',
         headers: {
@@ -41,7 +41,7 @@ export const editUser = user => (dispatch, getState) => {
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .catch(err => {
-            //console.log(err);
+            
             const {reason, message, location} = err;
             if (reason === 'ValidationError') {
                 // Convert ValidationErrors into SubmissionErrors for Redux Form

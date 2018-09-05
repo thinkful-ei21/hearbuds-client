@@ -40,14 +40,12 @@ export const setComment = (body) => (dispatch, getState) => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(({data}) => {
-        console.log(data);
         dispatch(setCommentSuccess(data));
     })
     .then(() => {
         dispatch(getEvent(eventId));
     })
     .catch(err => {
-        console.log('an error occurred')
         dispatch(setCommentError(err))
     })
 }
