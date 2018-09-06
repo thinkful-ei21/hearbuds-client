@@ -53,7 +53,8 @@ export class EventList extends React.Component {
         } else {
             return this.setState({
                 redirect: false,
-                message: <p>"You must be logged in to access this page"</p>
+                eventId,
+                message: <p className="single-event-error">Register and login to access this page!</p>
             })
         }
        
@@ -64,6 +65,7 @@ export class EventList extends React.Component {
         const {loading, error, eventList, page} = this.props;
         let events;
         let prevPage;
+        let message;
 
         if (loading) {
             return  <div id="spinner">
@@ -87,6 +89,12 @@ export class EventList extends React.Component {
                     prevPage = <button onClick={() => this.prevPageClick()}>Prev Page</button>
                 }
 
+                if (event.id === this.state.eventId) {
+                    message = this.state.message;
+                } else {
+                    message = null;
+                }
+
                return (
                     <div className="row"  key={index.toString()}>
                         <div className="col-5">
@@ -99,6 +107,7 @@ export class EventList extends React.Component {
 
                         </div>
                             <div className="col-3">
+                                {message}
                                 <button className="info-button" type='submit' value={event.id} onClick={(e) => this.goToEvent(e)}>See more info</button>
                             </div>
                         
@@ -108,7 +117,6 @@ export class EventList extends React.Component {
         }
         return (
             <div className="container">
-                {this.state.message}
                 {events}
                 {prevPage}
                 <h1>Page: {page}</h1>
