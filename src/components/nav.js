@@ -32,7 +32,7 @@ export class Nav extends React.Component {
                 <Link to="/edit">Edit Profile</Link>
             );
             logoButton = (
-                <Link to="/dashboard" className="logo-button"><h1>Hearbuds</h1></Link>
+                <Link to="/dashboard" className="logo-button"><h1 id="brand-text">Hearbuds</h1></Link>
             )
         }
         // display these links only when not logged in
