@@ -10,7 +10,6 @@ export class Dashboard extends React.Component {
 
 
     render() {
-
         if (!this.props.loading && !this.props.match.params.zipcode && !this.props.username) {
             return <Redirect to="/" />;
         }
