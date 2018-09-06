@@ -26,7 +26,9 @@ export class Nav extends React.Component {
                 <Link to="/dashboard">Dashboard</Link>
             );
             logOutButton = (
-                <a onClick={() => this.logOut()}>Log out</a>
+
+                <a onClick={() => this.logOut()} className="logout">Log out</a>
+
             );
             editProfileButton = (
                 <Link to="/edit">Edit Profile</Link>
