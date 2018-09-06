@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import Comment from './single-comment';
+import Spinner from 'react-spinkit';
 require('./comments.css');
 
 export class Comments extends React.Component {
@@ -12,9 +13,10 @@ export class Comments extends React.Component {
         
 
         if (loading) {
-           return <h1>loading...</h1>
+            return <div id="spinner">
+                    <Spinner name="ball-grid-pulse" color="orange"/>
+                </div>
         }
-
         if (error) {
             return <h1>{this.props.error}</h1>
         }

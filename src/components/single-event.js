@@ -6,6 +6,7 @@ import Comments from './comments';
 import AddComment from './add-comment'; 
 import moment from 'moment';
 import './single-event.css'
+import Spinner from 'react-spinkit';
 import { changeRsvp } from '../actions/single-event';
 
 class SingleEvent extends React.Component {
@@ -63,7 +64,9 @@ class SingleEvent extends React.Component {
         }
         // display a message while componenet is loading
         if (loading) {
-            return <div>Loading...</div>;
+            return  <div id="spinner">
+                        <Spinner name="ball-grid-pulse" color="orange"/>
+                    </div>
         }
         // display a message if there is an error
         if (error) {
