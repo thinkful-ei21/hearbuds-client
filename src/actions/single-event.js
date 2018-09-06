@@ -58,7 +58,6 @@ export const getEvent = (eventId) => (dispatch, getState) => {
     .then(res => res.json())
     .then(({ data }) => {
         // passes the response data into get event success
-        console.log("response data: ",data)
         dispatch(getEventSuccess(data))
     })
     // catches the error

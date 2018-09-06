@@ -126,7 +126,6 @@ export class EventList extends React.Component {
                 {events}
                 {prevPage}
                 <h1>Page: {page}</h1>
-                {/* <button onClick={() => this.prevPageClick()}>Prev Page</button> */}
                 <button onClick={() => this.nextPageClick()}>Next Page</button>
             </div>
         );

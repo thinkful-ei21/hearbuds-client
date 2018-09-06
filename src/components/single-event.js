@@ -27,7 +27,6 @@ class SingleEvent extends React.Component {
     rsvpCheck() {
         // arr is an array of objects with the user id and username of all rsvp'd users
         let arr = this.props.attending;
-        console.log("arr:", arr)
         if (arr === null) {
             // if the array is null, no one has rsvp'd
             return false
@@ -39,6 +38,17 @@ class SingleEvent extends React.Component {
                  } 
              }
              return false;
+        }
+    }
+
+    rsvpList() {
+        if (this.props.attending) {
+            return this.props.attending.map((user, index) => {
+                if (user.username === this.props.username) {
+                    return <li key={index.toString()}>You!</li>
+                } 
+                return <li key={index.toString()}>{user.username}</li>
+            });
         }
     }
 
@@ -56,8 +66,11 @@ class SingleEvent extends React.Component {
         const { loading, error, event } = this.props;
         // set the text in rsvp button depending on user's rsvp status
         let rsvpBool = this.rsvpCheck();
+        let rsvpList = this.rsvpList()
         let rsvpButton;
         let message;
+
+        // display diff info. to user depending on their rsvp status
         if (rsvpBool) {
             rsvpButton = "Cancel RSVP"
             message = "You are going to this event!"
@@ -65,7 +78,8 @@ class SingleEvent extends React.Component {
             message = null;
             rsvpButton = "RSVP to this event!"
         }
-        // display a message while componenet is loading
+
+        // display a spinner while componenet is loading
         if (loading) {
             return  <div id="spinner">
                         <Spinner name="ball-grid-pulse" color="orange"/>
@@ -94,6 +108,10 @@ class SingleEvent extends React.Component {
                         <div className="row">
                             <h1 className="center">{name}</h1>
                             <h3 className="center">Live at {venue.name} - {moment(dates.start.localDate).format("dddd, MMMM Do YYYY")}</h3>
+                            <div className="rsvp-message center">
+                                <p>{message}</p>
+                                <button onClick={() => this.rsvp()}>{rsvpButton}</button>
+                            </div>
                             <p className="right">
                                 <a href={ticketLink}>Buy Tickets</a>
                             </p>
@@ -103,23 +121,18 @@ class SingleEvent extends React.Component {
                                 <img id="event-image" src={smallImage} alt={name}></img>
                                 {bandLinkXml}
                             </div>
-                            <div className="col-6">
-                            
-                            </div>
+                            <div className="col-6 attending center">
+                                <p>Who's going?</p>
+                                <ul className="rsvp-list">
+                                    {rsvpList}
+                                </ul>                                                 
+                            </div>   
                         </div>
-
-                        
-                        <div className="rsvp-message">
-                            <p>{message}</p>
-                        </div>
-                    <button onClick={() => this.rsvp()}>{rsvpButton}</button>
-
                     <Comments />
                     <AddComment />
 
                     </div>
                     
-
                 </React.Fragment>
             )
         }
@@ -132,7 +145,8 @@ const mapStateToProps = state => {
     return {
         attending: state.singleEvent.attending,
         event: state.singleEvent.selectedEvent,
-        username: state.auth.currentUser.username
+        username: state.auth.currentUser.username,
+        error: state.singleEvent.error
     };
 };
 
