@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {getEventList, getNextPage, getPrevPage} from '../actions/event-list'
 import {Redirect} from 'react-router-dom';
 import moment from 'moment';
+import Spinner from 'react-spinkit';
 require('./event-list.css')
 
 export class EventList extends React.Component {
@@ -65,7 +66,9 @@ export class EventList extends React.Component {
         let prevPage;
 
         if (loading) {
-            return <div>Loading event list...</div>
+            return  <div id="spinner">
+                        <Spinner name="ball-grid-pulse" color="orange"/>
+                    </div>
         }
 
         if (error) {

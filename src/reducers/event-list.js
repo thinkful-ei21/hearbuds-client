@@ -31,7 +31,7 @@ const initialState = {
     eventList: null,
     page: 1,
     eventListPeek: null,
-    loading: false,
+    loading: true,
     error: null
 }
 
