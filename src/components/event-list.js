@@ -100,7 +100,6 @@ export class EventList extends React.Component {
                 } else {
                     message = null;
                 }
-                console.log(event, event.attending)
 
                return (
                     <div className="row"  key={index.toString()}>

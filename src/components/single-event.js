@@ -57,9 +57,12 @@ class SingleEvent extends React.Component {
         // set the text in rsvp button depending on user's rsvp status
         let rsvpBool = this.rsvpCheck();
         let rsvpButton;
+        let message;
         if (rsvpBool) {
             rsvpButton = "Cancel RSVP"
+            message = "You are going to this event!"
         } else {
+            message = null;
             rsvpButton = "RSVP to this event!"
         }
         // display a message while componenet is loading
@@ -106,7 +109,9 @@ class SingleEvent extends React.Component {
                         </div>
 
                         
-
+                        <div className="rsvp-message">
+                            <p>{message}</p>
+                        </div>
                     <button onClick={() => this.rsvp()}>{rsvpButton}</button>
 
                     <Comments />
