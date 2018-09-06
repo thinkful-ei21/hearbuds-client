@@ -66,6 +66,7 @@ export class EventList extends React.Component {
         let events;
         let prevPage;
         let message;
+        let rsvpCount;
 
         if (loading) {
             return  <div id="spinner">
@@ -89,11 +90,17 @@ export class EventList extends React.Component {
                     prevPage = <button onClick={() => this.prevPageClick()}>Prev Page</button>
                 }
 
+                if (event.attending) {
+                    rsvpCount = event.attending.length;
+                } else {
+                    rsvpCount = 0;
+                }
                 if (event.id === this.state.eventId) {
                     message = this.state.message;
                 } else {
                     message = null;
                 }
+                console.log(event, event.attending)
 
                return (
                     <div className="row"  key={index.toString()}>
@@ -103,7 +110,7 @@ export class EventList extends React.Component {
                         <div className="col-4">
                             <div className="event-name">{event.name}</div>
                             <p>{moment(event.dates.start.localDate).calendar() } - {moment(event.dates.start.localDate).from(moment())}</p>
-                            <p className="event-details">{event.venue.name} - x {event.rsvpCount} attending</p>
+                            <p className="event-details">{event.venue.name} - {rsvpCount} attending</p>
 
                         </div>
                             <div className="col-3">

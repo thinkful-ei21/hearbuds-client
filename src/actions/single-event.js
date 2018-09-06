@@ -49,7 +49,7 @@ export const getEvent = (eventId) => (dispatch, getState) => {
         body: JSON.stringify({
             // pass in the query to graphql
 
-            query: `{getById(id: "${eventId}") {id name attending {username} ticketLink bandLink smallImage venue { name } comments { id body time user { username id} } dates { start {localDate} } } }`
+            query: `{getById(id: "${eventId}") {id name attending {id username} ticketLink bandLink smallImage venue { name } comments { id body time user { username id} } dates { start {localDate} } } }`
 
         })
     })
@@ -58,6 +58,7 @@ export const getEvent = (eventId) => (dispatch, getState) => {
     .then(res => res.json())
     .then(({ data }) => {
         // passes the response data into get event success
+        console.log("response data: ",data)
         dispatch(getEventSuccess(data))
     })
     // catches the error

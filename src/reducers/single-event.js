@@ -33,14 +33,16 @@ export default function reducer(state = initialState, action) {
             selectedEvent: {
                 event: action.event.getById,
             },
+            attending: action.event.getById.attending,
             loading: false,
             error: null
         }
     } else if(action.type === GET_EVENT_ERROR) {
+        console.log(action.err)
         return {
             ...state,
             loading: false,
-            error: action.err.errors[0].message
+            error: action.err
         }
     } else if (action.type === RSVP_REQUEST) {
         return {
