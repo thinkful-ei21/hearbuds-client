@@ -26,7 +26,7 @@ class SingleEvent extends React.Component {
     rsvpCheck() {
         // arr is an array of objects with the user id and username of all rsvp'd users
         let arr = this.props.attending;
-        
+        console.log("arr:", arr)
         if (arr === null) {
             // if the array is null, no one has rsvp'd
             return false
@@ -110,6 +110,7 @@ class SingleEvent extends React.Component {
                     <AddComment />
 
                     </div>
+                    
 
                 </React.Fragment>
             )

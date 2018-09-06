@@ -105,6 +105,7 @@ export class EventList extends React.Component {
         }
         return (
             <div className="container">
+                {this.state.message}
                 {events}
                 {prevPage}
                 <h1>Page: {page}</h1>

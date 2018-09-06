@@ -1,59 +1,59 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import './sort-by.css';
-import {sortByPop} from '../actions/sort-by';
+// import React from 'react';
+// import {connect} from 'react-redux';
+// import './sort-by.css';
+// import {sortByPop} from '../actions/sort-by';
 
 
-export class SortBy extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            show: null
-        }
-    }
+// export class SortBy extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             show: null
+//         }
+//     }
 
-    toggleDropdown() {
-        if (this.state.show) {
-            this.setState({
-                show: null
-            })
-        } else if (!this.state.show) {
-            this.setState({
-                show: "show"
-            })
-        }
-    }
+//     toggleDropdown() {
+//         if (this.state.show) {
+//             this.setState({
+//                 show: null
+//             })
+//         } else if (!this.state.show) {
+//             this.setState({
+//                 show: "show"
+//             })
+//         }
+//     }
 
-    popularSort() {
+//     popularSort() {
 
-        this.props.dispatch(sortByPop())
-        this.setState({
-            show: null
-        })
-    }
+//         this.props.dispatch(sortByPop())
+//         this.setState({
+//             show: null
+//         })
+//     }
 
-    distanceSort() {
+//     distanceSort() {
 
-    }
+//     }
 
-    render() {
-        if (this.state.show) {
+//     render() {
+//         if (this.state.show) {
 
-        }
-        return (
-            <div className="dropdown">
-                <button onClick={() => this.toggleDropdown()}>Sort Results</button>
-                <div id="dropdown" className={"dropdown-content " + this.state.show}>
-                    <a onClick={() => this.popularSort()}>Popularity</a>
-                    <a onClick={() => this.distanceSort()}>Distance</a>    
-                </div>
-            </div>
-        );
-    }  
-}
+//         }
+//         return (
+//             <div className="dropdown">
+//                 <button onClick={() => this.toggleDropdown()}>Sort Results</button>
+//                 <div id="dropdown" className={"dropdown-content " + this.state.show}>
+//                     <a onClick={() => this.popularSort()}>Popularity</a>
+//                     <a onClick={() => this.distanceSort()}>Distance</a>    
+//                 </div>
+//             </div>
+//         );
+//     }  
+// }
 
-const mapStateToProps = state => ({
+// const mapStateToProps = state => ({
    
-});
+// });
 
-export default connect(mapStateToProps)(SortBy);
+// export default connect(mapStateToProps)(SortBy);
