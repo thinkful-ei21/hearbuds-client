@@ -3,10 +3,8 @@ import { shallow } from 'enzyme';
 
 import AddComment from './add-comment';
 
-describe(<AddComment />, function() {
+describe('<AddComment />', function() {
     it('renders without crashing', () => {
         shallow(<AddComment />);
     });
-
-    
 })

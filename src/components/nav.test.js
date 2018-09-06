@@ -3,8 +3,9 @@ import { shallow } from 'enzyme';
 
 import Nav from './nav';
 
-describe (<Nav />, () => {
+describe(<Nav />, () => {
     it('should render without crashing', () => {
         shallow(<Nav />);
     });
+
 })
