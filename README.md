@@ -33,7 +33,7 @@ _____________________
 * React Redux
 * Redux Thunk
 * JWT-Decode
-* deployed with Firebase
+* Deployed with Firebase
 
 ### Server-Side
 
@@ -43,11 +43,11 @@ _____________________
 * Passport
 * JSONWedToken
 * Bcryptjs
-* deployed with Zeit
+* Deployed with Zeit
 
 ## Dev setup
 
-* Clone both reops (this one and the [Server Repo](https://github.com/thinkful-ei21/hearbuds-server))
+* Clone both repos (this one and the [Server Repo](https://github.com/thinkful-ei21/hearbuds-server))
 
 * Once you have them cloned run `npm install` on both in order to get all dependancies.
 
