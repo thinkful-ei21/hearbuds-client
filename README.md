@@ -1,29 +1,29 @@
 # HearBuds
 
-## Revolutionsizing the concert going experience.
+## Revolutionizing the concert going experience.
 
 HearBuds allows users to find concerts in their area and find someone to go with.
 
 _____________________
 ## Link to the live version
- -[live app] (https://hearbuds-client.firebaseapp.com/)
- -[server repo] (https://github.com/thinkful-ei21/hearbuds-server)
+ -[live app](https://hearbuds-client.firebaseapp.com/)
+ -[server repo](https://github.com/thinkful-ei21/hearbuds-server)
 
  ____________________
  ## Screenshots
 
  ### Desktop View
 
-![Landing Page] (screenshots/desktop-landing-page.png)
-![Dashboard] (screenshots/desktop-dashboard.png)
-![Single Event] (screenshots/desktop-single-event.png)
+![Landing Page](screenshots/desktop-landing-page.png)
+![Dashboard](screenshots/desktop-dashboard.png)
+![Single Event](screenshots/desktop-single-event.png)
 
 
  ### Mobil View
 
-![Landing Page] (mobile/desktop-landing-page.png)
-![Dashboard] (mobile/desktop-dashboard.png)
-![Single Event] (mobile/desktop-single-event.png)
+![Landing Page](mobile/desktop-landing-page.png)
+![Dashboard](mobile/desktop-dashboard.png)
+![Single Event](mobile/desktop-single-event.png)
 
 
 ______________________
