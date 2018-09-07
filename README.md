@@ -14,16 +14,17 @@ _____________________
 
  ### Desktop View
 
-![Landing Page](screenshots/desktop-landing-page.png)
-![Dashboard](screenshots/desktop-dashboard.png)
-![Single Event](screenshots/desktop-single-event.png)
+![Landing Page](screenshots/desktop-landing-page.png)*Landing Page*
+![Dashboard](screenshots/desktop-dashboard.png)*Dashbaord*
+![Single Event](screenshots/desktop-single-event.png)*Single Event*
 
 
  ### Mobil View
 
-![Landing Page](screenshots/mobile-landing-page.png)
-![Dashboard](screenshots/mobile-dashboard.png)
-![Single Event](screenshots/mobile-single-event.png)
+![Landing Page](screenshots/mobile-landing-page.png)*Landing Page*
+![Dashboard](screenshots/mobile-dashboard.png)*Dashboard*
+![Single Event](screenshots/mobile-single-event.png)*Single Event*
+![Comments](screenshots/mobile-comments.png)*Comments*
 
 
 ______________________
