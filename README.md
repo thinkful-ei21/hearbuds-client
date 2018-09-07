@@ -21,9 +21,9 @@ _____________________
 
  ### Mobil View
 
-![Landing Page](mobile/desktop-landing-page.png)
-![Dashboard](mobile/desktop-dashboard.png)
-![Single Event](mobile/desktop-single-event.png)
+![Landing Page](screenshots/mobile-landing-page.png)
+![Dashboard](screenshots/mobile-dashboard.png)
+![Single Event](screenshots/mobile-single-event.png)
 
 
 ______________________
