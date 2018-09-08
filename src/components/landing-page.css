@@ -95,4 +95,8 @@ button.zipcode-search-button:hover {
 	.landing-page-text{
 		font-size: 1.9em;
 	}
+
+	button.zipcode-search-button {
+		margin-top: 80px;
+	}
 }
